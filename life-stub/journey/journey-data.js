@@ -126,6 +126,78 @@
       relatedEcho: 'e33',
       createdAt: Date.now() - 1000 * 60 * 60 * 24 * 120,
       settledAt: Date.now() - 1000 * 60 * 60 * 24 * 100
+    },
+    {
+      id: 'j13',
+      stage: STAGE_QUICK,
+      content: '今天整理旧物翻出了高中的校服，口袋里还有一张写满数学公式的草稿纸。突然想起那年冬天，同桌把唯一的暖手宝塞给我，说他不冷。现在他在哪？',
+      mood: '柔软',
+      relatedEcho: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 10,
+      settledAt: 0
+    },
+    {
+      id: 'j14',
+      stage: STAGE_QUICK,
+      content: '早上出门时，爸爸在楼下花园剪枝。他说这棵桂花树是我出生那年栽的，今年开得特别密。我看了一眼就走了，没多说什么。',
+      mood: '愧疚',
+      relatedEcho: 'e5',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 3,
+      settledAt: 0
+    },
+    {
+      id: 'j15',
+      stage: STAGE_QUICK,
+      content: '刚刚把儿子的小书包收拾出来捐了。他现在上三年级了，用不上了。收拾的时候翻出一张他三岁时画的"全家福"，把我画成了一个三角形，说妈妈是"尖尖的"。',
+      mood: '温暖',
+      relatedEcho: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 7,
+      settledAt: 0
+    },
+    {
+      id: 'j16',
+      stage: STAGE_QUICK,
+      content: '听了一首歌，歌词是"总以为来日方长，却忘了世事无常"。突然想给妈打个电话，不是因为有事，就是想听听她的声音。她在电话那头说"吃了吗"，我说"吃了"，然后沉默了三秒。',
+      mood: '平静',
+      relatedEcho: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 2,
+      settledAt: 0
+    },
+    {
+      id: 'j17',
+      stage: STAGE_QUICK,
+      content: '在超市看到一位老人推着购物车，车里坐着他的老伴儿，老伴儿戴着氧气面罩。老人在跟她念叨"今天的排骨新鲜"。我看了很久，差点在超市哭出来。',
+      mood: '难过',
+      relatedEcho: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
+      settledAt: 0
+    },
+    {
+      id: 'j18',
+      stage: STAGE_SETTLED,
+      content: '上周带妈妈去了那个她说了好久的包子铺。她吃了三个，说"还是当年的味道"。回家的路上她睡着了，头靠在车窗上。我没叫醒她，绕路多开了两圈。这件事我已存进存根簿。',
+      mood: '温暖',
+      relatedEcho: 'e2',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 14,
+      settledAt: Date.now() - 1000 * 60 * 60 * 24 * 3
+    },
+    {
+      id: 'j19',
+      stage: STAGE_SETTLED,
+      content: '终于跟弟弟说了那句"对不起"。为了十年前的事。他说"我早忘了"。但我知道他没有，因为他说话的语气变轻了。',
+      mood: '愧疚',
+      relatedEcho: 'e15',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 30,
+      settledAt: Date.now() - 1000 * 60 * 60 * 24 * 10
+    },
+    {
+      id: 'j20',
+      stage: STAGE_SETTLED,
+      content: '把外婆的菜谱整理成了文档。有一道菜，我做了三次都做不出那个味。后来才发现，关键不在调料，在于切肉的刀法——要横切，不能顺纹。',
+      mood: '平静',
+      relatedEcho: 'e8',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 20,
+      settledAt: Date.now() - 1000 * 60 * 60 * 24 * 5
     }
   ];
 

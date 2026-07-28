@@ -163,6 +163,39 @@
       reply: '',
       createdAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
       threadId: 't12'
+    },
+    {
+      id: 'm13',
+      type: T_FUTURE,
+      to: '一年后的自己',
+      fromEcho: '',
+      echoExcerpt: '',
+      content: '如果你还在为那件事难过，请记得：你已经比去年的你更好了。时间不是用来忘记的，而是用来沉淀的。',
+      reply: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 8,
+      threadId: 't13'
+    },
+    {
+      id: 'm14',
+      type: T_FUTURE,
+      to: '五年后的自己',
+      fromEcho: '',
+      echoExcerpt: '',
+      content: '那时候爸爸应该快八十了吧？请你每周至少回去看他一次。不是因为你应该，而是因为你想。他做的红烧肉，你在外面永远吃不到。',
+      reply: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 20,
+      threadId: 't14'
+    },
+    {
+      id: 'm15',
+      type: T_FUTURE,
+      to: '十年后的自己',
+      fromEcho: '',
+      echoExcerpt: '',
+      content: '看看你的白发，数一数有几根是因为当年那件事白的。然后告诉自己：值了。因为你没有被击垮，你变得更像你自己了。',
+      reply: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 30,
+      threadId: 't15'
     }
   ];
 
