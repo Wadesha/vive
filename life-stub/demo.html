@@ -23,9 +23,12 @@
 <main class="main">
   <section class="reader">
     <div class="reader-header">
-      <h1 class="reader-title">存根簿 · 示例</h1>
-      <p class="reader-sub">以下是一个人的生活痕迹，作为示例</p>
+      <h1 class="reader-title">存根簿 · 翻阅</h1>
+      <p class="reader-sub">生活痕迹，一一存档</p>
     </div>
+
+    <!-- 存根簿切换 -->
+    <div class="stub-switcher" id="stubSwitcher"></div>
 
     <div class="reader-tabs">
       <button class="tab active" data-tab="details">生活细节</button>
@@ -35,209 +38,46 @@
     </div>
 
     <div class="reader-content">
-      <div class="tab-panel active" id="details">
-        <div class="entry">
-          <div class="entry-date">三月十四日 · 晴</div>
-          <div class="entry-body">
-            <p>他喝茶的时候，习惯先把杯子转三圈，再轻轻吹一下。</p>
-            <p>那个带茶垢的旧瓷杯，杯口有一道细裂纹，他说那是"岁月的吻痕"。</p>
-          </div>
-          <div class="entry-tags">
-            <span class="tag">习惯</span>
-            <span class="tag">茶</span>
-            <span class="tag">物品</span>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-date">四月二日 · 雨</div>
-          <div class="entry-body">
-            <p>他说话会带一句"你晓得伐"，说了二十多年，改不掉。</p>
-            <p>吵架的时候也会说，听起来格外滑稽。</p>
-          </div>
-          <div class="entry-tags">
-            <span class="tag">语言</span>
-            <span class="tag">口头禅</span>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-date">四月十五日 · 多云</div>
-          <div class="entry-body">
-            <p>他走路的时候，左脚微微有点拖，是年轻时受伤留下的。</p>
-            <p>我现在在超市里听到类似的脚步声，还是会愣住。</p>
-          </div>
-          <div class="entry-tags">
-            <span class="tag">身体</span>
-            <span class="tag">声音</span>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-date">五月一日 · 晴</div>
-          <div class="entry-body">
-            <p>他做菜放盐的顺序很奇怪：先盐后糖再酱油。</p>
-            <p>女儿说"这不对"，但他坚持说"这样才有层次"。</p>
-          </div>
-          <div class="entry-tags">
-            <span class="tag">习惯</span>
-            <span class="tag">食物</span>
-            <span class="tag">厨房</span>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-date">六月八日 · 夜</div>
-          <div class="entry-body">
-            <p>他看书时会把书页折一个很小的角，只有我能找到他读到了哪里。</p>
-            <p>他走的那天，桌上摊着一本《浮生六记》，正翻在卷二。</p>
-          </div>
-          <div class="entry-tags">
-            <span class="tag">物品</span>
-            <span class="tag">阅读</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-panel" id="emotions">
-        <div class="entry entry-emotion">
-          <div class="entry-date">三月二十日</div>
-          <div class="entry-body">
-            <p class="emotion-text">我买了他爱喝的碧螺春，泡茶的时候手在抖。</p>
-            <p class="emotion-text">水倒进去，茶叶翻上来，像他当年做的那样。</p>
-            <p class="emotion-text">可是今天，只有我一个人喝。</p>
-          </div>
-        </div>
-
-        <div class="entry entry-emotion">
-          <div class="entry-date">四月四日</div>
-          <div class="entry-body">
-            <p class="emotion-text">去菜场，路过他常买的那家豆腐摊。</p>
-            <p class="emotion-text">"两块嫩豆腐。"我脱口而出，才意识到他已经不在了。</p>
-            <p class="emotion-text">摊主看着我，我笑了一下，眼睛湿了。</p>
-            <p class="emotion-text">原来有些话，不是用来说的，是用来留的。</p>
-          </div>
-        </div>
-
-        <div class="entry entry-emotion">
-          <div class="entry-date">五月十二日</div>
-          <div class="entry-body">
-            <p class="emotion-text">今天我没哭。</p>
-            <p class="emotion-text">不是因为不想，是因为哭累了。</p>
-            <p class="emotion-text">我坐在阳台上，看了一下午的云。</p>
-            <p class="emotion-text">风把窗帘吹起来，我好像听到他在书房翻书的声音。</p>
-            <p class="emotion-text">也可能只是风。</p>
-          </div>
-        </div>
-
-        <div class="entry entry-emotion">
-          <div class="entry-date">六月十九日</div>
-          <div class="entry-body">
-            <p class="emotion-text">朋友说"时间会冲淡一切"。</p>
-            <p class="emotion-text">我没反驳，因为反驳了也只是让她尴尬。</p>
-            <p class="emotion-text">但我心里想的是——我不想被冲淡。</p>
-            <p class="emotion-text">那些细节本来就是我的一部分，</p>
-            <p class="emotion-text">为什么要被冲掉？</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-panel" id="connections">
-        <div class="connection-map">
-          <div class="map-center">
-            <div class="map-node center">他</div>
-          </div>
-          <div class="map-links">
-            <div class="link-item">
-              <span class="link-label">说话方式</span>
-              <span class="link-desc">现在我也会说"你晓得伐"，女儿学去了，外孙女也在学</span>
-            </div>
-            <div class="link-item">
-              <span class="link-label">饮食习惯</span>
-              <span class="link-desc">先盐后糖再酱油，我已经改不回来了</span>
-            </div>
-            <div class="link-item">
-              <span class="link-label">阅读习惯</span>
-              <span class="link-desc">看书折小角，现在家里每个人都这么做</span>
-            </div>
-            <div class="link-item">
-              <span class="link-label">喝茶仪式</span>
-              <span class="link-desc">转三圈，吹一下，已经变成我们家的喝茶规矩</span>
-            </div>
-            <div class="link-item">
-              <span class="link-label">走路节奏</span>
-              <span class="link-desc">偶尔我会发现自己走路左脚有点拖，原来是跟他学的</span>
-            </div>
-          </div>
-          <div class="map-footnote">
-            他留给你的，已经变成了你身上的一部分
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-panel" id="anchors">
-        <div class="anchor-list">
-          <div class="anchor-item">
-            <div class="anchor-icon">🎵</div>
-            <div class="anchor-info">
-              <div class="anchor-title">2019年的一段录音</div>
-              <div class="anchor-desc">他在厨房唱歌，跑调跑得离谱</div>
-              <div class="anchor-meta">时长 47秒 · 录音</div>
-            </div>
-          </div>
-
-          <div class="anchor-item">
-            <div class="anchor-icon">✉️</div>
-            <div class="anchor-info">
-              <div class="anchor-title">一封没有寄出的信</div>
-              <div class="anchor-desc">2017年3月，他写的，放在抽屉最里面</div>
-              <div class="anchor-meta">文字 · 3页</div>
-            </div>
-          </div>
-
-          <div class="anchor-item">
-            <div class="anchor-icon">📷</div>
-            <div class="anchor-info">
-              <div class="anchor-title">阳台晒太阳的照片</div>
-              <div class="anchor-desc">2020年冬天，他眯着眼睛，手放在膝盖上</div>
-              <div class="anchor-meta">照片 · 3张</div>
-            </div>
-          </div>
-
-          <div class="anchor-item">
-            <div class="anchor-icon">🍵</div>
-            <div class="anchor-info">
-              <div class="anchor-title">那只带茶垢的旧瓷杯</div>
-              <div class="anchor-desc">杯口有裂纹，他说是"岁月的吻痕"</div>
-              <div class="anchor-meta">物品 · 已保存</div>
-            </div>
-          </div>
-
-          <div class="anchor-item">
-            <div class="anchor-icon">📖</div>
-            <div class="anchor-info">
-              <div class="anchor-title">《浮生六记》卷二</div>
-              <div class="anchor-desc">他走的那天，桌上摊着的那本书</div>
-              <div class="anchor-meta">物品 · 页码有折痕</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="anchor-empty">
-          <p>当某一天，你走过熟悉的街角，</p>
-          <p>或者吃到某道菜突然愣神的时候——</p>
-          <p class="anchor-empty-highlight">翻开这里。</p>
-        </div>
-      </div>
+      <div class="tab-panel active" id="details"></div>
+      <div class="tab-panel" id="emotions"></div>
+      <div class="tab-panel" id="connections"></div>
+      <div class="tab-panel" id="anchors"></div>
     </div>
+
+    <!-- 添加按钮 -->
+    <button class="fab" id="fabAdd" title="添加条目">+</button>
   </section>
 </main>
+
+<!-- 添加条目弹窗 -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">添加条目</h2>
+      <button class="modal-close" id="modalClose">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- 存根簿管理弹窗 -->
+<div class="modal-overlay" id="stubModalOverlay">
+  <div class="modal" id="stubModal">
+    <div class="modal-header">
+      <h2 class="modal-title">存根簿管理</h2>
+      <button class="modal-close" id="stubModalClose">&times;</button>
+    </div>
+    <div class="modal-body" id="stubModalBody"></div>
+  </div>
+</div>
 
 <footer class="footer">
   <p>存根簿 · Life Stub</p>
   <p class="footer-sub">给重情义的人，一个落脚的地方</p>
 </footer>
 
+<script src="data.js"></script>
+<script src="render.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -1,20 +1,5 @@
 (function () {
-  var tabs = document.querySelectorAll('.tab');
-  var panels = document.querySelectorAll('.tab-panel');
-
-  if (tabs.length) {
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var target = this.getAttribute('data-tab');
-        tabs.forEach(function (t) { t.classList.remove('active'); });
-        panels.forEach(function (p) { p.classList.remove('active'); });
-        this.classList.add('active');
-        var panel = document.getElementById(target);
-        if (panel) panel.classList.add('active');
-      });
-    });
-  }
-
+  // ── 滚动渐入动画（首页 & 关于页使用） ──
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -23,7 +8,7 @@
     });
   }, { threshold: 0.15 });
 
-  var pageEls = document.querySelectorAll('.stub-page, .entry, .about-block, .anchor-item');
+  var pageEls = document.querySelectorAll('.stub-page, .about-block');
   pageEls.forEach(function (el) {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
@@ -35,6 +20,7 @@
   style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
   document.head.appendChild(style);
 
+  // ── 导航平滑滚动 ──
   var navLinks = document.querySelectorAll('.nav-links a');
   navLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
@@ -47,6 +33,7 @@
     });
   });
 
+  // ── Hero 向下滚动 ──
   var heroScroll = document.querySelector('.hero-scroll');
   if (heroScroll) {
     heroScroll.addEventListener('click', function (e) {
@@ -56,6 +43,7 @@
     });
   }
 
+  // ── 翻开存根簿按钮 ──
   var enterBtn = document.querySelector('.enter-btn');
   if (enterBtn) {
     enterBtn.addEventListener('click', function (e) {
@@ -74,6 +62,7 @@
     });
   }
 
+  // ── 纸纹理视差 ──
   var paperTexture = document.querySelector('.paper-texture');
   if (paperTexture) {
     var ticking = false;
