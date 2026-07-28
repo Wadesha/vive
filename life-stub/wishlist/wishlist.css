@@ -1,0 +1,585 @@
+/* 心愿册样式 — 打卡清单/愿望板气质，强调进度与状态 */
+
+.wishlist-main {
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+/* —— 头部 —— */
+.wishlist-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.wishlist-header .section-line {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  vertical-align: middle;
+}
+
+.wishlist-header .section-line:first-child { margin-right: 24px; }
+.wishlist-header .section-line:last-of-type { margin-left: 24px; }
+
+.wishlist-title {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 8px;
+  color: var(--ink);
+  vertical-align: middle;
+  padding: 0 8px;
+}
+
+.wishlist-sub {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--ink-faint);
+  letter-spacing: 2px;
+}
+
+.wishlist-desc {
+  margin-top: 22px;
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--ink-light);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* —— 进度总览 —— */
+.wishlist-progress {
+  background: #FDFBF7;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.wishlist-progress-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--ink-light);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.wishlist-progress-total b,
+.wishlist-progress-pct b {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.wishlist-progress-pct {
+  margin-left: auto;
+}
+
+.wishlist-progress-detail {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.wishlist-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--paper-dark);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.wishlist-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+.wishlist-progress-by-target {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.wishlist-target-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wishlist-target-name {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.wishlist-target-count {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.wishlist-target-bar {
+  height: 5px;
+  background: var(--paper-dark);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.wishlist-target-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* —— 工具条 —— */
+.wishlist-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.wishlist-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wishlist-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wishlist-filter-label {
+  font-size: 12px;
+  color: var(--ink-faint);
+  letter-spacing: 1px;
+  min-width: 30px;
+}
+
+.wishlist-filter {
+  padding: 5px 12px;
+  background: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--ink-light);
+  transition: all 0.2s ease;
+}
+
+.wishlist-filter:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.wishlist-filter.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.wishlist-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* —— 按钮 —— */
+.wishlist-btn {
+  padding: 8px 16px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  transition: all 0.25s ease;
+}
+
+.wishlist-btn.ghost {
+  background: transparent;
+  color: var(--ink-light);
+}
+
+.wishlist-btn.ghost:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.wishlist-btn.ghost.small {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.wishlist-btn.ghost.danger {
+  color: var(--red-seal);
+}
+
+.wishlist-btn.ghost.danger:hover {
+  border-color: var(--red-seal);
+  background: rgba(165, 42, 42, 0.05);
+}
+
+.wishlist-btn.ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wishlist-btn.solid {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.wishlist-btn.solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.wishlist-btn.solid.small {
+  padding: 5px 12px;
+  font-size: 13px;
+}
+
+/* —— 卡片列表 —— */
+.wishlist-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .wishlist-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.wishlist-card {
+  position: relative;
+  background: #FDFBF7;
+  border: 1px solid var(--line);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.wishlist-card:hover {
+  box-shadow: 0 10px 28px rgba(61, 52, 38, 0.08);
+  transform: translateY(-2px);
+}
+
+/* 状态色条 */
+.wishlist-card--todo { border-left: 4px solid #6B5D4D; }
+.wishlist-card--doing { border-left: 4px solid var(--accent); }
+.wishlist-card--done {
+  border-left: 4px solid #A89B8C;
+  opacity: 0.92;
+  background: rgba(237, 228, 211, 0.35);
+}
+
+.wishlist-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.wishlist-target-tag {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.wishlist-cat-tag {
+  font-size: 11px;
+  padding: 1px 7px;
+  background: rgba(196, 182, 164, 0.3);
+  color: var(--ink-light);
+  letter-spacing: 1px;
+}
+
+/* 分类配色 */
+.wishlist-cat-陪伴 { background: rgba(139, 69, 19, 0.12); color: #8B4513; }
+.wishlist-cat-传承 { background: rgba(107, 93, 77, 0.15); color: #4A3F30; }
+.wishlist-cat-告别 { background: rgba(165, 42, 42, 0.1); color: #A52A2A; }
+.wishlist-cat-和解 { background: rgba(212, 167, 106, 0.2); color: #8B6914; }
+.wishlist-cat-日常 { background: rgba(168, 155, 140, 0.2); color: #6B5D4D; }
+.wishlist-cat-仪式 { background: rgba(160, 82, 45, 0.12); color: #A0522D; }
+
+.wishlist-status-badge {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 2px 8px;
+  letter-spacing: 1px;
+}
+
+.wishlist-status-todo { background: #6B5D4D; color: var(--paper); }
+.wishlist-status-doing { background: var(--accent); color: var(--paper); }
+.wishlist-status-done { background: #A89B8C; color: var(--paper); }
+
+.wishlist-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.wishlist-card--done .wishlist-card-title {
+  text-decoration: line-through;
+  text-decoration-color: rgba(168, 155, 140, 0.6);
+  color: var(--ink-light);
+}
+
+.wishlist-check {
+  color: #A89B8C;
+  font-weight: 700;
+}
+
+/* —— 三段笔记 —— */
+.wishlist-note {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--line);
+  background: rgba(247, 241, 232, 0.5);
+}
+
+.wishlist-note--why { border-left-color: var(--accent); }
+.wishlist-note--plan { border-left-color: var(--ink-light); }
+.wishlist-note--done { border-left-color: #A89B8C; }
+
+.wishlist-note-label {
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.wishlist-note-body {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink-light);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* —— 卡片底部操作 —— */
+.wishlist-card-foot {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(196, 182, 164, 0.4);
+}
+
+/* —— 空状态 —— */
+.wishlist-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-faint);
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+/* —— 弹窗 —— */
+.wishlist-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.wishlist-modal[hidden] { display: none; }
+
+.wishlist-modal-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(61, 52, 38, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.wishlist-modal-body {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 600px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--paper);
+  border: 1px solid var(--accent);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  padding: 30px 34px;
+}
+
+.wishlist-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+
+.wishlist-modal-close:hover { color: var(--red-seal); }
+
+.wishlist-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+/* —— 模板快选 —— */
+.wishlist-templates {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  background: rgba(212, 167, 106, 0.1);
+  border-left: 2px solid var(--highlight);
+}
+
+.wishlist-templates-hint {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-bottom: 8px;
+}
+
+.wishlist-template-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wishlist-template-chip {
+  padding: 4px 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--accent);
+  transition: all 0.2s ease;
+}
+
+.wishlist-template-chip:hover {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+}
+
+/* —— 表单 —— */
+.wishlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wishlist-form-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.wishlist-form-row .wishlist-field {
+  flex: 1;
+  min-width: 140px;
+}
+
+.wishlist-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-light);
+  letter-spacing: 1px;
+}
+
+.wishlist-field input,
+.wishlist-field select,
+.wishlist-field textarea {
+  padding: 10px 12px;
+  background: #FDFBF7;
+  border: 1px solid var(--line);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.7;
+  resize: vertical;
+}
+
+.wishlist-field input:focus,
+.wishlist-field select:focus,
+.wishlist-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.wishlist-stage-mark {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.stage-why { color: var(--accent); }
+.stage-plan { color: var(--ink-light); }
+.stage-done { color: #A89B8C; }
+
+.wishlist-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* —— 移动端 —— */
+@media (max-width: 600px) {
+  .wishlist-main {
+    padding: 90px 16px 40px;
+  }
+
+  .wishlist-title {
+    font-size: 28px;
+    letter-spacing: 5px;
+  }
+
+  .wishlist-toolbar {
+    flex-direction: column;
+  }
+
+  .wishlist-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .wishlist-progress-pct {
+    margin-left: 0;
+  }
+
+  .wishlist-modal-body {
+    padding: 24px 20px;
+  }
+}

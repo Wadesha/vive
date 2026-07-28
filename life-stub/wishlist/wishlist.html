@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心愿册 · 生活存根簿</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+<div class="paper-texture"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">存根簿</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../demo.html">翻阅</a></li>
+      <li><a href="../capsule/capsule.html">时光胶囊</a></li>
+      <li><a href="../echo/echo.html">回声库</a></li>
+      <li><a href="../journey/journey.html">历程簿</a></li>
+      <li><a href="wishlist.html" class="active">心愿册</a></li>
+      <li><a href="../about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main wishlist-main">
+  <section class="wishlist-header">
+    <div class="section-line"></div>
+    <h1 class="wishlist-title">心愿册</h1>
+    <div class="section-line"></div>
+    <p class="wishlist-sub">Wishlist · 把未来会遗憾的事，提前变成要做的事</p>
+    <p class="wishlist-desc">
+      事后的感慨，往往是"早知道就做了"。<br>
+      心愿册把它<span class="highlight">倒过来</span>：趁还在，把该做的列出来，<br>
+      写下<span class="underline">为什么</span>，提前<span class="underline">准备</span>，从容去做，做完<span class="underline">存档</span>。<br>
+      比写日记友好——不面对空白页，有模板、有打卡、有进度。
+    </p>
+  </section>
+
+  <!-- ── 进度总览 ── -->
+  <section class="wishlist-progress" id="wishlistProgress">
+    <!-- render 注入：总进度 + 按关系分组进度条 -->
+  </section>
+
+  <!-- ── 工具条 ── -->
+  <section class="wishlist-toolbar">
+    <div class="wishlist-filters">
+      <div class="wishlist-filter-group">
+        <span class="wishlist-filter-label">关系</span>
+        <button class="wishlist-filter active" data-target="all">全部</button>
+        <span id="wishlistTargets"></span>
+      </div>
+      <div class="wishlist-filter-group">
+        <span class="wishlist-filter-label">状态</span>
+        <button class="wishlist-filter active" data-status="all">全部</button>
+        <button class="wishlist-filter" data-status="todo">待做</button>
+        <button class="wishlist-filter" data-status="doing">在做</button>
+        <button class="wishlist-filter" data-status="done">完成</button>
+      </div>
+    </div>
+    <div class="wishlist-actions">
+      <button class="wishlist-btn solid" id="wishlistAddBtn">＋ 添加一个心愿</button>
+      <button class="wishlist-btn ghost small danger" id="wishlistResetBtn">重置</button>
+    </div>
+  </section>
+
+  <!-- ── 心愿列表 ── -->
+  <section class="wishlist-list" id="wishlistList">
+    <!-- render 注入卡片 -->
+  </section>
+
+  <section class="wishlist-empty" id="wishlistEmpty" hidden>
+    <p>这个筛选下暂无心愿。</p>
+  </section>
+</main>
+
+<!-- 添加/编辑弹窗（三段笔记） -->
+<div class="wishlist-modal" id="wishlistModal" hidden>
+  <div class="wishlist-modal-mask" data-close></div>
+  <article class="wishlist-modal-body">
+    <button class="wishlist-modal-close" data-close aria-label="关闭">×</button>
+    <h3 class="wishlist-modal-title" id="wishlistModalTitle">添加一个心愿</h3>
+
+    <!-- 模板快选 -->
+    <div class="wishlist-templates" id="wishlistTemplates" hidden>
+      <p class="wishlist-templates-hint">不知道写什么？选个模板填空：</p>
+      <div class="wishlist-template-list" id="wishlistTemplateList"></div>
+    </div>
+
+    <form id="wishlistForm" class="wishlist-form">
+      <div class="wishlist-form-row">
+        <label class="wishlist-field">
+          <span>为谁做</span>
+          <input type="text" name="target" placeholder="如：妈妈 / 爸爸 / 自己" required>
+        </label>
+        <label class="wishlist-field">
+          <span>分类</span>
+          <select name="category" id="wishlistFormCategory"></select>
+        </label>
+      </div>
+
+      <label class="wishlist-field">
+        <span>心愿</span>
+        <input type="text" name="title" placeholder="如：带妈妈看一次海" required>
+      </label>
+
+      <label class="wishlist-field">
+        <span class="wishlist-stage-mark stage-why">事前 · 为什么</span>
+        <textarea name="why" rows="3" placeholder="当初为什么想做这件事？写下来，防止做到一半忘了初衷。"></textarea>
+      </label>
+
+      <label class="wishlist-field">
+        <span class="wishlist-stage-mark stage-plan">事中 · 怎么准备</span>
+        <textarea name="plan" rows="3" placeholder="怎么安排？提前准备什么？写清楚，到时候才从容。"></textarea>
+      </label>
+
+      <label class="wishlist-field wishlist-done-field" id="wishlistDoneField" hidden>
+        <span class="wishlist-stage-mark stage-done">事后 · 做完的感受</span>
+        <textarea name="done" rows="3" placeholder="做完了吗？感受如何？存下来，即使关系结束也无悔。"></textarea>
+      </label>
+
+      <div class="wishlist-form-actions">
+        <button type="button" class="wishlist-btn ghost" data-close>取消</button>
+        <button type="submit" class="wishlist-btn solid" id="wishlistFormSave">保存</button>
+      </div>
+    </form>
+  </article>
+</div>
+
+<footer class="footer">
+  <p>心愿册 · Wishlist</p>
+  <p class="footer-sub">把事后的感慨，变成事前的准备</p>
+</footer>
+
+<script src="wishlist-data.js"></script>
+<script src="wishlist-render.js"></script>
+</body>
+</html>
