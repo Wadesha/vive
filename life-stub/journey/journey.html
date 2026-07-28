@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>历程簿 · 生活存根簿</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="journey.css">
+</head>
+<body>
+<div class="paper-texture"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">存根簿</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../demo.html">翻阅</a></li>
+      <li><a href="../capsule/capsule.html">时光胶囊</a></li>
+      <li><a href="../echo/echo.html">回声库</a></li>
+      <li><a href="journey.html" class="active">历程簿</a></li>
+      <li><a href="../about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main journey-main">
+  <section class="journey-header">
+    <div class="section-line"></div>
+    <h1 class="journey-title">历程簿</h1>
+    <div class="section-line"></div>
+    <p class="journey-sub">Journey · 记录自己的当下，不让自己的事也溜走</p>
+    <p class="journey-desc">
+      存根簿锚定他人，回声库归档他者文字，时光胶囊寄往未来——<br>
+      而<span class="highlight">历程簿</span>是留给自己的。<br>
+      很多人很会记自己的事，我们常常忘了，回头只剩"当时怎么回事想不起来了"。<br>
+      所以分三段接住：<span class="underline">之前埋种子 · 之中随手记 · 之后回头沉淀</span>。
+    </p>
+  </section>
+
+  <!-- ── 速记入口（之中）放在最显眼位置，一句话也能存 ── -->
+  <section class="journey-quick-input">
+    <textarea id="quickText" rows="3" placeholder="现在想到什么，就写什么。一句话也行，不强制标签。&#10;比如：刚才路过面包店，闻到黄油味，想起外婆烤的馒头片。"></textarea>
+    <div class="journey-quick-bar">
+      <select id="quickMood">
+        <option value="">心情（可选）</option>
+        <option value="温暖">温暖</option>
+        <option value="柔软">柔软</option>
+        <option value="开心">开心</option>
+        <option value="难过">难过</option>
+        <option value="平静">平静</option>
+        <option value="烦躁">烦躁</option>
+        <option value="愧疚">愧疚</option>
+      </select>
+      <select id="quickEcho">
+        <option value="">关联回声库（可选）</option>
+      </select>
+      <button id="quickSaveBtn" class="journey-btn solid">记下这一刻</button>
+    </div>
+  </section>
+
+  <!-- ── 三栏：待记 / 速记 / 回顾 ── -->
+  <section class="journey-columns">
+    <!-- 之前：待记 -->
+    <article class="journey-col journey-col--todo">
+      <header class="journey-col-head">
+        <h2><span class="journey-stage-mark">之前</span>待记</h2>
+        <p class="journey-col-hint">事前埋下种子，"下次要记下什么"</p>
+      </header>
+      <form class="journey-todo-form" id="todoForm">
+        <input type="text" id="todoText" placeholder="如：下次见妈妈，记下她做红烧肉的顺序">
+        <button type="submit" class="journey-btn ghost small">埋一颗种子</button>
+      </form>
+      <div class="journey-col-list" id="todoList"></div>
+    </article>
+
+    <!-- 之中：速记 -->
+    <article class="journey-col journey-col--quick">
+      <header class="journey-col-head">
+        <h2><span class="journey-stage-mark">之中</span>速记</h2>
+        <p class="journey-col-hint">已经发生的当下记录，按时间倒序</p>
+      </header>
+      <div class="journey-col-list" id="quickList"></div>
+    </article>
+
+    <!-- 之后：回顾 -->
+    <article class="journey-col journey-col--settled">
+      <header class="journey-col-head">
+        <h2><span class="journey-stage-mark">之后</span>回顾</h2>
+        <p class="journey-col-hint">已沉淀的条目，可撤回</p>
+      </header>
+      <div class="journey-col-list" id="settledList"></div>
+    </article>
+  </section>
+
+  <section class="journey-footer-bar">
+    <div class="journey-stats" id="journeyStats"></div>
+    <button class="journey-btn ghost small danger" id="journeyResetBtn">重置为示例数据</button>
+  </section>
+</main>
+
+<!-- 编辑弹窗 -->
+<div class="journey-modal" id="journeyModal" hidden>
+  <div class="journey-modal-mask" data-close></div>
+  <article class="journey-modal-body">
+    <button class="journey-modal-close" data-close aria-label="关闭">×</button>
+    <h3 class="journey-modal-title" id="journeyModalTitle">编辑</h3>
+    <textarea id="journeyModalText" rows="5" class="journey-modal-textarea"></textarea>
+    <div class="journey-modal-row">
+      <label>心情
+        <select id="journeyModalMood">
+          <option value="">（无）</option>
+          <option value="温暖">温暖</option>
+          <option value="柔软">柔软</option>
+          <option value="开心">开心</option>
+          <option value="难过">难过</option>
+          <option value="平静">平静</option>
+          <option value="烦躁">烦躁</option>
+          <option value="愧疚">愧疚</option>
+        </select>
+      </label>
+      <label>关联回声库
+        <select id="journeyModalEcho">
+          <option value="">（无）</option>
+        </select>
+      </label>
+    </div>
+    <div class="journey-modal-actions">
+      <button type="button" class="journey-btn ghost" data-close>取消</button>
+      <button type="button" class="journey-btn solid" id="journeyModalSave">保存</button>
+    </div>
+  </article>
+</div>
+
+<footer class="footer">
+  <p>历程簿 · Journey</p>
+  <p class="footer-sub">自己的事，也要好好记住</p>
+</footer>
+
+<script src="../echo/echo-data.js"></script>
+<script src="journey-data.js"></script>
+<script src="journey-render.js"></script>
+</body>
+</html>
