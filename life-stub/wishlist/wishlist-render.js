@@ -17,6 +17,7 @@
   }
 
   // ── DOM ──
+  var $quickGrid = document.getElementById('wishlistQuickGrid');
   var $progress = document.getElementById('wishlistProgress');
   var $targets = document.getElementById('wishlistTargets');
   var $list = document.getElementById('wishlistList');
@@ -31,6 +32,69 @@
   var $doneField = document.getElementById('wishlistDoneField');
   var $templates = document.getElementById('wishlistTemplates');
   var $templateList = document.getElementById('wishlistTemplateList');
+
+  // ── 快速心愿（6 个，点一下就加，不用填表）──
+  var QUICK_WISHES = [
+    { target: '妈妈', title: '带妈妈看一次海', category: '陪伴',
+      why: '她说这辈子没看过海。每次电视里播海，她都多看两眼。',
+      plan: '国庆假期，订去海边的票。选她能走得动的路线。' },
+    { target: '爸爸', title: '问清他年轻时最骄傲的事', category: '传承',
+      why: '我只知道他做什么工作，不知道他这辈子得意过什么。',
+      plan: '下次回去，泡壶茶，慢慢问。准备好录音。' },
+    { target: '奶奶', title: '录下她拿手菜的菜谱', category: '传承',
+      why: '她做的味道，是我对"家"的味觉记忆。趁还能问赶紧记。',
+      plan: '回乡下住几天，每天学一道。录视频 + 写文字，精确到克。' },
+    { target: '自己', title: '一个人去一次海边', category: '日常',
+      why: '总说等有空了就去。等了十年，还是没去。',
+      plan: '下周末就去。不做攻略。带本书，看一下午浪。' },
+    { target: '老朋友', title: '主动联系那个失联的朋友', category: '和解',
+      why: '当年因为一件小事闹掰。现在想想，不值得。',
+      plan: '找到联系方式。不提当年的事。就问："最近怎么样？"' },
+    { target: '全家', title: '拍一张正经的全家福', category: '仪式',
+      why: '上一张全家福是十年前了。再不拍，人又该变了。',
+      plan: '今年春节全家到齐那天，用三脚架自拍。一个都不能少。' }
+  ];
+
+  function renderQuickWishes() {
+    $quickGrid.innerHTML = QUICK_WISHES.map(function (w, i) {
+      return '<button class="wishlist-quick-card" data-idx="' + i + '">' +
+        '<span class="wishlist-quick-cat">' + escapeHtml(w.category) + '</span>' +
+        '<span class="wishlist-quick-title">' + escapeHtml(w.title) + '</span>' +
+        '<span class="wishlist-quick-target">@ ' + escapeHtml(w.target) + '</span>' +
+        '<span class="wishlist-quick-add">＋ 一键加入</span>' +
+        '</button>';
+    }).join('');
+  }
+
+  $quickGrid.addEventListener('click', function (e) {
+    var btn = e.target.closest('.wishlist-quick-card');
+    if (!btn) return;
+    var idx = parseInt(btn.getAttribute('data-idx'), 10);
+    var w = QUICK_WISHES[idx];
+    if (!w) return;
+    var newItem = Wishlist.add({
+      target: w.target,
+      category: w.category,
+      title: w.title,
+      why: w.why,
+      plan: w.plan
+    });
+    // 小动效
+    btn.classList.add('added');
+    btn.querySelector('.wishlist-quick-add').textContent = '✓ 已加入';
+    setTimeout(function () {
+      btn.classList.remove('added');
+      btn.querySelector('.wishlist-quick-add').textContent = '＋ 一键加入';
+    }, 1500);
+    state.status = 'todo';
+    // 同步状态筛选按钮高亮
+    document.querySelectorAll('[data-status]').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-status') === 'todo');
+    });
+    renderAll();
+    // 滚到列表
+    $list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 
   // ── 初始化分类下拉 + 模板快选 ──
   function initCategoryOptions() {
@@ -170,13 +234,9 @@
     } else if (item.status === 'doing') {
       advanceBtn.textContent = '完成了！✓';
       advanceBtn.addEventListener('click', function () {
-        // 完成时如果没填 done，提示填一下
+        // 推进到 done
         Wishlist.advance(item.id);
         renderAll();
-        if (!item.done) {
-          // 自动打开编辑，引导填 done
-          setTimeout(function () { openEdit(item.id, true); }, 100);
-        }
       });
     } else {
       advanceBtn.textContent = '已完成';
@@ -209,6 +269,44 @@
     foot.appendChild(delBtn);
 
     card.appendChild(foot);
+
+    // done 状态下展示"写感受"展开框（没填 done 时提示）
+    if (item.status === 'done' && !item.done) {
+      var doneBox = document.createElement('div');
+      doneBox.className = 'wishlist-done-inline';
+      var doneLabel = document.createElement('div');
+      doneLabel.className = 'wishlist-done-inline-label';
+      doneLabel.textContent = '做完了，写点感受？（存下来，以后不后悔）';
+      var doneText = document.createElement('textarea');
+      doneText.className = 'wishlist-done-inline-text';
+      doneText.rows = 3;
+      doneText.placeholder = '比如：做完才发现，原来她等这一天等了很久……';
+      var doneActions = document.createElement('div');
+      doneActions.className = 'wishlist-done-inline-actions';
+      var doneSkip = document.createElement('button');
+      doneSkip.className = 'wishlist-btn ghost small';
+      doneSkip.textContent = '以后再写';
+      var doneSave = document.createElement('button');
+      doneSave.className = 'wishlist-btn solid small';
+      doneSave.textContent = '存档 ✓';
+      doneActions.appendChild(doneSkip);
+      doneActions.appendChild(doneSave);
+      doneBox.appendChild(doneLabel);
+      doneBox.appendChild(doneText);
+      doneBox.appendChild(doneActions);
+      card.appendChild(doneBox);
+
+      doneSave.addEventListener('click', function () {
+        var val = doneText.value.trim();
+        if (!val) return;
+        Wishlist.update(item.id, { done: val });
+        renderAll();
+      });
+      doneSkip.addEventListener('click', function () {
+        doneBox.style.display = 'none';
+      });
+    }
+
     return card;
   }
 
@@ -334,6 +432,7 @@
   $form.addEventListener('submit', handleSubmit);
 
   // ── 初始化 ──
+  renderQuickWishes();
   initCategoryOptions();
   initTemplates();
   renderAll();

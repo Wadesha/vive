@@ -309,6 +309,46 @@
   white-space: pre-wrap;
 }
 
+/* —— 展开式回信输入 —— */
+.mail-reply-inline {
+  margin: 10px 0 12px;
+  padding: 12px 14px;
+  background: rgba(237, 228, 211, 0.25);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  animation: mailReplyIn 0.25s ease;
+}
+@keyframes mailReplyIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mail-reply-textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #FFFEFC;
+  padding: 10px 12px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink);
+  resize: vertical;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.mail-reply-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #FFFDF9;
+}
+
+.mail-reply-inline-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
 .mail-card-foot {
   display: flex;
   gap: 8px;

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>生活存根簿 · 痕迹的锚点</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=0.9">
 </head>
 <body>
 <div class="paper-texture"></div>
@@ -39,14 +39,69 @@
         而是一个接住那些随时会溜走的<br>
         <span class="highlight">生活细节</span> 的容器
       </p>
-      <a href="#dimensions" class="hero-scroll">
-        <span>向下翻阅</span>
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
     </div>
     <div class="hero-decoration">
       <div class="stamp">痕迹</div>
       <div class="torn-edge"></div>
+    </div>
+  </section>
+
+  <!-- ── 今日入口：点一下就有动作，不用找 ── -->
+  <section class="today-entry">
+    <!-- 速记：直接写，直接存 -->
+    <div class="today-quick">
+      <p class="today-quick-label">今天想记下点什么？</p>
+      <div class="today-quick-box">
+        <textarea id="todayQuickText" rows="2" placeholder="一句话也行。Ctrl/⌘ + Enter 保存到历程簿"></textarea>
+        <div class="today-quick-bar">
+          <select id="todayQuickMood">
+            <option value="">心情（可选）</option>
+            <option value="温暖">温暖</option>
+            <option value="柔软">柔软</option>
+            <option value="开心">开心</option>
+            <option value="难过">难过</option>
+            <option value="平静">平静</option>
+            <option value="烦躁">烦躁</option>
+            <option value="愧疚">愧疚</option>
+          </select>
+          <button id="todayQuickSave" class="today-quick-btn">记下这一刻</button>
+        </div>
+        <p id="todayQuickHint" class="today-quick-hint" hidden>✓ 已存进历程簿</p>
+      </div>
+    </div>
+
+    <!-- 六个行动入口：点一下就触发 -->
+    <div class="today-actions">
+      <a href="echo/echo.html" class="today-action today-action--echo">
+        <span class="today-action-mark">回声库</span>
+        <span class="today-action-title">抽一条回声给我</span>
+        <span class="today-action-hint">随机一段，看看"另一个我"在说什么</span>
+      </a>
+      <a href="mail/mail.html" class="today-action today-action--mail">
+        <span class="today-action-mark">回信亭</span>
+        <span class="today-action-title">给未来的自己写句话</span>
+        <span class="today-action-hint">不是封存，是对话——未来你会回信</span>
+      </a>
+      <a href="wishlist/wishlist.html" class="today-action today-action--wish">
+        <span class="today-action-mark">心愿册</span>
+        <span class="today-action-title">今天该完成哪个心愿</span>
+        <span class="today-action-hint">别等以后，现在就做一件</span>
+      </a>
+      <a href="capsule/capsule.html" class="today-action today-action--cap">
+        <span class="today-action-mark">时光胶囊</span>
+        <span class="today-action-title">拆一封可以开的胶囊</span>
+        <span class="today-action-hint">看看过去的自己，留给现在的话</span>
+      </a>
+      <a href="journey/journey.html" class="today-action today-action--journey">
+        <span class="today-action-mark">历程簿</span>
+        <span class="today-action-title">翻翻这些天记下的</span>
+        <span class="today-action-hint">自己的事，也要好好记住</span>
+      </a>
+      <a href="links/links.html" class="today-action today-action--links">
+        <span class="today-action-mark">引用网</span>
+        <span class="today-action-title">看看我的回响网络</span>
+        <span class="today-action-hint">所有互相回应的痕迹，都在这里</span>
+      </a>
     </div>
   </section>
 
@@ -297,6 +352,7 @@
   <p class="footer-sub">给重情义的人，一个落脚的地方</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="journey/journey-data.js?v=0.9"></script>
+<script src="script.js?v=0.9"></script>
 </body>
 </html>

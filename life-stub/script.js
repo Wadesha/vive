@@ -62,6 +62,38 @@
     });
   }
 
+  // ── 首页速记：直接写，直接存到历程簿 ──
+  var $todayQuick = document.getElementById('todayQuickText');
+  if ($todayQuick && typeof Journey !== 'undefined') {
+    var $todayMood = document.getElementById('todayQuickMood');
+    var $todaySave = document.getElementById('todayQuickSave');
+    var $todayHint = document.getElementById('todayQuickHint');
+
+    function saveTodayQuick() {
+      var text = $todayQuick.value.trim();
+      if (!text) { $todayQuick.focus(); return; }
+      Journey.addQuick({
+        content: text,
+        mood: $todayMood ? $todayMood.value : '',
+        relatedEcho: ''
+      });
+      $todayQuick.value = '';
+      if ($todayMood) $todayMood.value = '';
+      if ($todayHint) {
+        $todayHint.hidden = false;
+        setTimeout(function () { $todayHint.hidden = true; }, 2000);
+      }
+    }
+
+    if ($todaySave) $todaySave.addEventListener('click', saveTodayQuick);
+    $todayQuick.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        saveTodayQuick();
+      }
+    });
+  }
+
   // ── 纸纹理视差 ──
   var paperTexture = document.querySelector('.paper-texture');
   if (paperTexture) {

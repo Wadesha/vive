@@ -109,9 +109,10 @@
     foot.className = 'journey-card-foot';
 
     if (stage === Journey.STAGE_TODO) {
-      var startBtn = mkBtn('开始记', 'ghost small', function () {
-        // 把待记转成速记：打开编辑弹窗预填内容
-        openModal(item, '把种子记下来');
+      var startBtn = mkBtn('发芽 →', 'solid small', function () {
+        // 待记 → 速记：一键转换，不弹框
+        Journey.todoToQuick(item.id);
+        renderAll();
       });
       var delBtn = mkBtn('删除', 'ghost small danger', function () {
         if (confirm('删掉这颗种子？')) { Journey.deleteItem(item.id); renderAll(); }

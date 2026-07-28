@@ -49,6 +49,82 @@
   margin-right: auto;
 }
 
+/* —— 快速心愿 —— */
+.wishlist-quick {
+  margin-bottom: 28px;
+}
+
+.wishlist-quick-hint {
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.wishlist-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.wishlist-quick-card {
+  background: #FFFEFA;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  font-family: inherit;
+}
+.wishlist-quick-card:hover {
+  border-color: var(--accent);
+  background: #FFFBF0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.12);
+}
+.wishlist-quick-card.added {
+  background: #F0F7EB;
+  border-color: #6B8E4E;
+}
+
+.wishlist-quick-cat {
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.wishlist-quick-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.wishlist-quick-target {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+
+.wishlist-quick-add {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.76rem;
+  color: var(--accent);
+  background: rgba(194, 154, 108, 0.1);
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
 /* —— 进度总览 —— */
 .wishlist-progress {
   background: #FDFBF7;
@@ -389,6 +465,53 @@
   border-top: 1px dashed rgba(196, 182, 164, 0.4);
 }
 
+/* —— done 展开式感受输入 —— */
+.wishlist-done-inline {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: rgba(237, 228, 211, 0.25);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  animation: wishDoneIn 0.25s ease;
+}
+@keyframes wishDoneIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wishlist-done-inline-label {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.wishlist-done-inline-text {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #FFFEFC;
+  padding: 10px 12px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink);
+  resize: vertical;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.wishlist-done-inline-text:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #FFFDF9;
+}
+
+.wishlist-done-inline-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
 /* —— 空状态 —— */
 .wishlist-empty {
   text-align: center;
@@ -559,6 +682,10 @@
 @media (max-width: 600px) {
   .wishlist-main {
     padding: 90px 16px 40px;
+  }
+
+  .wishlist-quick-grid {
+    grid-template-columns: 1fr;
   }
 
   .wishlist-title {

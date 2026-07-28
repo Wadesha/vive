@@ -904,6 +904,182 @@ body {
   font-weight: 600;
 }
 
+/* —— 今日入口（首页）—— */
+.today-entry {
+  max-width: 960px;
+  margin: 0 auto 64px;
+}
+
+.today-quick {
+  background: #FFFEFA;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(139, 115, 85, 0.06);
+}
+
+.today-quick-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.today-quick-box {
+  position: relative;
+}
+
+.today-quick-box textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #FFFEFC;
+  padding: 14px 16px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--ink);
+  resize: vertical;
+  border-radius: 3px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s;
+}
+.today-quick-box textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #FFFDF9;
+}
+
+.today-quick-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.today-quick-bar select {
+  border: 1px solid var(--line);
+  background: #FFFEFC;
+  padding: 6px 10px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.today-quick-bar select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.today-quick-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.today-quick-btn:hover { background: #A67B4E; }
+.today-quick-btn:active { transform: translateY(1px); }
+
+.today-quick-hint {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.82rem;
+  color: #6B8E4E;
+  background: rgba(107, 142, 78, 0.1);
+  padding: 4px 10px;
+  border-radius: 10px;
+  margin: 0;
+  animation: hintFadeIn 0.3s ease;
+}
+@keyframes hintFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.today-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.today-action {
+  display: block;
+  background: #FFFEFA;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.today-action:hover {
+  border-color: var(--accent);
+  background: #FFFBF0;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(139, 115, 85, 0.12);
+}
+.today-action::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.today-action:hover::before { opacity: 1; }
+
+.today-action-mark {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 10px;
+  background: rgba(194, 154, 108, 0.1);
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+.today-action-title {
+  display: block;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.today-action-hint {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.6;
+}
+
+.today-action--echo .today-action-mark { color: #8B7355; background: rgba(139, 115, 85, 0.1); }
+.today-action--mail .today-action-mark { color: #A0522D; background: rgba(160, 82, 45, 0.1); }
+.today-action--wish .today-action-mark { color: #9B7B47; background: rgba(155, 123, 71, 0.1); }
+.today-action--cap .today-action-mark { color: #7A6A55; background: rgba(122, 106, 85, 0.1); }
+.today-action--journey .today-action-mark { color: #6B5D4D; background: rgba(107, 93, 77, 0.1); }
+.today-action--links .today-action-mark { color: #5C4A3A; background: rgba(92, 74, 58, 0.1); }
+
 @media (max-width: 768px) {
   .nav-inner {
     padding: 14px 20px;
@@ -988,6 +1164,14 @@ body {
     margin: 20px;
     max-height: 80vh;
   }
+
+  .today-entry { margin-bottom: 40px; }
+  .today-quick { padding: 18px 16px; }
+  .today-quick-label { font-size: 0.95rem; }
+  .today-actions { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .today-action { padding: 14px 16px; }
+  .today-action-title { font-size: 0.95rem; }
+  .today-action-hint { font-size: 0.78rem; }
 }
 
 /* ── v0.2: 存根簿切换器 ── */

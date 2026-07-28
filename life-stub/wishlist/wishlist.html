@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>心愿册 · 生活存根簿</title>
-<link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="wishlist.css">
+<link rel="stylesheet" href="../style.css?v=0.9">
+<link rel="stylesheet" href="wishlist.css?v=0.9">
 </head>
 <body>
 <div class="paper-texture"></div>
@@ -39,6 +39,14 @@
       写下<span class="underline">为什么</span>，提前<span class="underline">准备</span>，从容去做，做完<span class="underline">存档</span>。<br>
       比写日记友好——不面对空白页，有模板、有打卡、有进度。
     </p>
+  </section>
+
+  <!-- ── 快速心愿（点一下就加，不用填表）── -->
+  <section class="wishlist-quick">
+    <p class="wishlist-quick-hint">不知道从哪开始？点下面任意一个，直接加入心愿册：</p>
+    <div class="wishlist-quick-grid" id="wishlistQuickGrid">
+      <!-- render 注入：6 个快速心愿按钮 -->
+    </div>
   </section>
 
   <!-- ── 进度总览 ── -->
@@ -136,7 +144,7 @@
   <p class="footer-sub">把事后的感慨，变成事前的准备</p>
 </footer>
 
-<script src="wishlist-data.js"></script>
-<script src="wishlist-render.js"></script>
+<script src="wishlist-data.js?v=0.9"></script>
+<script src="wishlist-render.js?v=0.9"></script>
 </body>
 </html>

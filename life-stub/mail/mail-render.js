@@ -96,15 +96,52 @@
       card.appendChild(reply);
     }
 
+    // 展开式回信输入框（默认隐藏）
+    var replyBox = document.createElement('div');
+    replyBox.className = 'mail-reply-inline';
+    replyBox.hidden = true;
+    var replyText = document.createElement('textarea');
+    replyText.className = 'mail-reply-textarea';
+    replyText.rows = 4;
+    replyText.placeholder = '写回信……  写完点"寄出"';
+    replyText.value = item.reply || '';
+    var replyActions = document.createElement('div');
+    replyActions.className = 'mail-reply-inline-actions';
+    var replyCancel = document.createElement('button');
+    replyCancel.className = 'mail-btn ghost small';
+    replyCancel.textContent = '取消';
+    var replySave = document.createElement('button');
+    replySave.className = 'mail-btn solid small';
+    replySave.textContent = item.reply ? '更新回信' : '寄出回信';
+    replyActions.appendChild(replyCancel);
+    replyActions.appendChild(replySave);
+    replyBox.appendChild(replyText);
+    replyBox.appendChild(replyActions);
+    card.appendChild(replyBox);
+
     // 操作
     var foot = document.createElement('footer');
     foot.className = 'mail-card-foot';
 
-    var openBtn = document.createElement('button');
-    openBtn.className = 'mail-btn ghost small';
-    openBtn.textContent = item.reply ? '查看 / 修改回信' : '写回信';
-    openBtn.addEventListener('click', function () { openDetail(item.id); });
-    foot.appendChild(openBtn);
+    var replyBtn = document.createElement('button');
+    replyBtn.className = 'mail-btn solid small';
+    replyBtn.textContent = item.reply ? '继续回信' : '写回信';
+    replyBtn.addEventListener('click', function () {
+      var isOpen = !replyBox.hidden;
+      // 关掉其他所有展开的回信框（同时只开一个）
+      document.querySelectorAll('.mail-reply-inline').forEach(function (el) { el.hidden = true; });
+      if (!isOpen) {
+        replyBox.hidden = false;
+        replyText.focus();
+      }
+    });
+    foot.appendChild(replyBtn);
+
+    var detailBtn = document.createElement('button');
+    detailBtn.className = 'mail-btn ghost small';
+    detailBtn.textContent = '查看全文';
+    detailBtn.addEventListener('click', function () { openDetail(item.id); });
+    foot.appendChild(detailBtn);
 
     var delBtn = document.createElement('button');
     delBtn.className = 'mail-btn ghost small danger';
@@ -115,6 +152,18 @@
     foot.appendChild(delBtn);
 
     card.appendChild(foot);
+
+    // 回信保存
+    replySave.addEventListener('click', function () {
+      var val = replyText.value.trim();
+      if (!val) return;
+      EchoMail.setReply(item.id, val);
+      renderList();
+    });
+    replyCancel.addEventListener('click', function () {
+      replyBox.hidden = true;
+    });
+
     return card;
   }
 
