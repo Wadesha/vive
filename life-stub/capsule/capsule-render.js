@@ -179,7 +179,33 @@
     html += '<span class="letter-unlock">开启：' + fmtDate(cap.unlockAt) + '</span>';
     html += '</div>';
     html += '</div>';
+
+    // ── 开启后的感想区 ──
+    html += '<div class="cap-reply-area">';
+    html += '<label class="cap-reply-label">读完后想对过去/未来的自己说一句什么？（点保存会存进历程簿）</label>';
+    html += '<textarea id="capReplyText" rows="2" placeholder="一句话就行……"></textarea>';
+    html += '<button class="cap-reply-btn" id="capReplyBtn">💾 存进历程簿</button>';
+    html += '</div>';
+
     bodyEl.innerHTML = html;
+
+    // 绑定保存按钮
+    var replyBtn = document.getElementById('capReplyBtn');
+    if (replyBtn) {
+      replyBtn.addEventListener('click', function () {
+        var ta = document.getElementById('capReplyText');
+        var text = ta.value.trim();
+        if (!text) { ta.focus(); return; }
+        saveReplyToJourney(cap, text);
+        ta.value = '';
+        replyBtn.textContent = '✓ 已存进历程簿';
+        replyBtn.disabled = true;
+        setTimeout(function () {
+          replyBtn.textContent = '💾 存进历程簿';
+          replyBtn.disabled = false;
+        }, 2000);
+      });
+    }
   }
 
   function moodLabel(m) {
@@ -266,6 +292,28 @@
       t.classList.remove('show');
       setTimeout(function () { t.remove(); }, 400);
     }, 2500);
+  }
+
+  // ── 开启胶囊后：把感想存进历程簿 ──
+  function saveReplyToJourney(cap, text) {
+    var journey = JSON.parse(localStorage.getItem('journey_data') || 'null');
+    if (!journey || !Array.isArray(journey)) journey = [];
+    var maxId = 0;
+    journey.forEach(function (j) {
+      var num = parseInt(j.id.replace(/^j/, ''), 10);
+      if (num > maxId) maxId = num;
+    });
+    journey.push({
+      id: 'j' + (maxId + 1),
+      stage: 'quick',
+      content: '拆开时光胶囊《' + cap.title + '》后想到的：\n\n' + text + '\n\n—— 封存于 ' + fmtDate(cap.createdAt) + '，开启于 ' + fmtDate(Date.now()),
+      mood: '',
+      relatedEcho: '',
+      createdAt: Date.now(),
+      settledAt: 0
+    });
+    localStorage.setItem('journey_data', JSON.stringify(journey));
+    showToast('✓ 感想已存进历程簿');
   }
 
   // ── 初始化 ──

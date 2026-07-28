@@ -664,3 +664,56 @@
     font-size: 13px;
   }
 }
+
+/* ── 胶囊感想区 ── */
+.cap-reply-area {
+  margin-top: 20px;
+  padding: 16px;
+  background: #FDF9F2;
+  border: 1px dashed #C9B99A;
+  border-radius: 4px;
+}
+
+.cap-reply-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #8B7355;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.cap-reply-area textarea {
+  width: 100%;
+  border: 1px solid #D4C4A8;
+  background: #FFFEFC;
+  padding: 10px 12px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  color: #3E3529;
+  border-radius: 3px;
+  box-sizing: border-box;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.cap-reply-area textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.cap-reply-btn {
+  margin-top: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.88rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.cap-reply-btn:hover { background: #A67B4E; }
+.cap-reply-btn:active { transform: translateY(1px); }
+.cap-reply-btn:disabled { opacity: 0.6; cursor: default; }

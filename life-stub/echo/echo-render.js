@@ -169,11 +169,27 @@
     }
 
     html += '<hr class="echo-divider">';
+    html += '<div class="echo-detail-actions">';
+    html += '<span class="echo-detail-actions-label">一键摘录到：</span>';
+    html += '<button class="echo-detail-btn" data-action="toJourney">📝 存为速记</button>';
+    html += '<button class="echo-detail-btn" data-action="toMail">✉️ 写回信</button>';
+    html += '<button class="echo-detail-btn" data-action="toWishlist">🎯 许愿关联</button>';
+    html += '</div>';
+
+    html += '<hr class="echo-divider">';
     html += '<label class="echo-detail-my-label" for="echoMyNote">我的笔记（自动保存）</label>';
     html += '<textarea id="echoMyNote" class="echo-detail-my-note" rows="4" placeholder="读到这里，想到谁？想到什么事？">' + escapeHtml(userNote) + '</textarea>';
 
     $modalContent.innerHTML = html;
     $modal.hidden = false;
+
+    // ── 摘录按钮事件绑定 ──
+    $modalContent.querySelectorAll('.echo-detail-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var action = btn.getAttribute('data-action');
+        handleExcerptAction(action, item);
+      });
+    });
 
     var ta = document.getElementById('echoMyNote');
     var saveTimer = null;
@@ -280,4 +296,90 @@
 
   // ── 初始化 ──
   renderList();
+
+  // ── 摘录动作：用 localStorage 直接写入其他模块 ──
+  function handleExcerptAction(action, echo) {
+    if (action === 'toJourney') {
+      var journey = JSON.parse(localStorage.getItem('journey_data') || 'null');
+      if (!journey || !Array.isArray(journey)) {
+        journey = [];
+      }
+      var existingMaxId = 0;
+      journey.forEach(function (j) {
+        var num = parseInt(j.id.replace(/^j/, ''), 10);
+        if (num > existingMaxId) existingMaxId = num;
+      });
+      journey.push({
+        id: 'j' + (existingMaxId + 1),
+        stage: 'quick',
+        content: '读到"' + echo.title + '"：' + echo.excerpt + '\n\n—— ' + (echo.author || '佚名') + '《' + (echo.source || '未标注') + '》',
+        mood: '',
+        relatedEcho: echo.id,
+        createdAt: Date.now(),
+        settledAt: 0
+      });
+      localStorage.setItem('journey_data', JSON.stringify(journey));
+      showToast('✓ 已存进历程簿，去历程簿查看');
+    }
+    else if (action === 'toMail') {
+      var mail = JSON.parse(localStorage.getItem('echo_mail_data') || 'null');
+      if (!mail || !Array.isArray(mail)) {
+        mail = [];
+      }
+      var maxMailId = 0;
+      mail.forEach(function (m) {
+        var num = parseInt(m.id.replace(/^m/, ''), 10);
+        if (num > maxMailId) maxMailId = num;
+      });
+      mail.push({
+        id: 'm' + (maxMailId + 1),
+        type: 'mirror',
+        to: '现在的我',
+        fromEcho: echo.id,
+        echoExcerpt: echo.excerpt,
+        content: '—— ' + (echo.author || '佚名') + '的话。读到时想到了什么？',
+        reply: '',
+        createdAt: Date.now(),
+        threadId: 't' + (Date.now() % 10000)
+      });
+      localStorage.setItem('echo_mail_data', JSON.stringify(mail));
+      showToast('✓ 已生成一封"平行我"来信，去回信亭回信');
+    }
+    else if (action === 'toWishlist') {
+      var wishlist = JSON.parse(localStorage.getItem('wishlist_data') || 'null');
+      if (!wishlist || !Array.isArray(wishlist)) {
+        wishlist = [];
+      }
+      var maxWishId = 0;
+      wishlist.forEach(function (w) {
+        var num = parseInt(w.id.replace(/^w/, ''), 10);
+        if (num > maxWishId) maxWishId = num;
+      });
+      wishlist.push({
+        id: 'w' + (maxWishId + 1),
+        target: '自己',
+        title: '因为"' + echo.title + '"想做的一件事',
+        category: '日常',
+        why: '读到这段话："' + echo.excerpt.substring(0, 30) + '…" 觉得不该再等了。',
+        plan: '想想具体要做什么，写下来。',
+        done: '',
+        status: 'todo',
+        createdAt: Date.now(),
+        checkins: []
+      });
+      localStorage.setItem('wishlist_data', JSON.stringify(wishlist));
+      showToast('✓ 已创建一个关联心愿，去心愿簿完成');
+    }
+  }
+
+  function showToast(msg) {
+    var toast = document.createElement('div');
+    toast.className = 'echo-excerpt-toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(function () {
+      toast.style.opacity = '0';
+      setTimeout(function () { toast.remove(); }, 300);
+    }, 2500);
+  }
 })();

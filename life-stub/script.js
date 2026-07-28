@@ -94,6 +94,65 @@
     });
   }
 
+  // ── 我的痕迹：读取 localStorage 统计 ──
+  function loadMyStats() {
+    var stats = {
+      echo: 0, journey: 0, wish: 0, capsule: 0, mail: 0, stub: 0
+    };
+    try {
+      var ed = JSON.parse(localStorage.getItem('echo_archive_data') || 'null');
+      if (Array.isArray(ed)) stats.echo = ed.length;
+    } catch (e) {}
+    try {
+      var jd = JSON.parse(localStorage.getItem('journey_data') || 'null');
+      if (Array.isArray(jd)) stats.journey = jd.length;
+    } catch (e) {}
+    try {
+      var wd = JSON.parse(localStorage.getItem('wishlist_data') || 'null');
+      if (Array.isArray(wd)) stats.wish = wd.length;
+    } catch (e) {}
+    try {
+      var cd = JSON.parse(localStorage.getItem('time_capsule_data') || 'null');
+      if (Array.isArray(cd)) stats.capsule = cd.length;
+    } catch (e) {}
+    try {
+      var md = JSON.parse(localStorage.getItem('echo_mail_data') || 'null');
+      if (Array.isArray(md)) stats.mail = md.length;
+    } catch (e) {}
+    try {
+      var sd = JSON.parse(localStorage.getItem('life_stub_data') || 'null');
+      if (Array.isArray(sd)) stats.stub = sd.length;
+    } catch (e) {}
+
+    // 如果 localStorage 是空的（首次访问），显示 seed 数据的统计
+    if (stats.echo === 0) stats.echo = 81;
+    if (stats.journey === 0) stats.journey = 20;
+    if (stats.wish === 0) stats.wish = 64;
+    if (stats.capsule === 0) stats.capsule = 25;
+    if (stats.mail === 0) stats.mail = 15;
+    if (stats.stub === 0) stats.stub = 20;
+
+    var el = function (id) { return document.getElementById(id); };
+    var animateNum = function ($el, target) {
+      if (!$el) return;
+      var cur = 0;
+      var step = Math.max(1, Math.floor(target / 20));
+      var timer = setInterval(function () {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(timer); }
+        $el.textContent = cur;
+      }, 30);
+    };
+
+    animateNum(el('statEcho'), stats.echo);
+    animateNum(el('statJourney'), stats.journey);
+    animateNum(el('statWish'), stats.wish);
+    animateNum(el('statCapsule'), stats.capsule);
+    animateNum(el('statMail'), stats.mail);
+    animateNum(el('statStub'), stats.stub);
+  }
+  loadMyStats();
+
   // ── 纸纹理视差 ──
   var paperTexture = document.querySelector('.paper-texture');
   if (paperTexture) {
