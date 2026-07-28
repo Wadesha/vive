@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>回声库 · 生活存根簿</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="echo.css">
+</head>
+<body>
+<div class="paper-texture"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">存根簿</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../demo.html">翻阅</a></li>
+      <li><a href="../capsule/capsule.html">时光胶囊</a></li>
+      <li><a href="echo.html" class="active">回声库</a></li>
+      <li><a href="../about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main echo-main">
+  <section class="echo-header">
+    <div class="section-line"></div>
+    <h1 class="echo-title">回声库</h1>
+    <div class="section-line"></div>
+    <p class="echo-sub">Echo Archive · 那些"当时不知道怎么回事，回头才看见"的关系与记忆</p>
+    <p class="echo-desc">
+      这里归档了来自<span class="underline">中国现当代文学</span>、<span class="underline">个人真实分享</span>、<span class="underline">口述史</span>
+      的文字碎片。<br>
+      它们替我们说出了那些说不出口的话，也提醒我们：<br>
+      <span class="highlight">很多关系，当时不知道怎么回事，回头其实早已埋下伏笔。</span>
+    </p>
+  </section>
+
+  <section class="echo-toolbar">
+    <div class="echo-filters" id="echoFilters">
+      <button class="echo-filter active" data-type="all">全部</button>
+      <button class="echo-filter" data-type="literature">文学经典</button>
+      <button class="echo-filter" data-type="personal">个人分享</button>
+      <button class="echo-filter" data-type="oral">口述史</button>
+    </div>
+    <div class="echo-actions">
+      <button class="echo-btn ghost" id="echoAddBtn">＋ 补录一条</button>
+      <button class="echo-btn ghost" id="echoResetBtn">重置为初始归档</button>
+    </div>
+  </section>
+
+  <section class="echo-stats" id="echoStats">
+    <!-- 由 render 注入：归档总数 / 主题分布 -->
+  </section>
+
+  <section class="echo-list" id="echoList">
+    <!-- 由 render 注入卡片 -->
+  </section>
+
+  <section class="echo-empty" id="echoEmpty" hidden>
+    <p>这个分类下暂无归档。</p>
+  </section>
+</main>
+
+<!-- 详情/笔记弹窗 -->
+<div class="echo-modal" id="echoModal" hidden>
+  <div class="echo-modal-mask" data-close></div>
+  <article class="echo-modal-body">
+    <button class="echo-modal-close" data-close aria-label="关闭">×</button>
+    <div id="echoModalContent"></div>
+  </article>
+</div>
+
+<!-- 补录弹窗 -->
+<div class="echo-modal" id="echoAddModal" hidden>
+  <div class="echo-modal-mask" data-close></div>
+  <article class="echo-modal-body echo-add-body">
+    <button class="echo-modal-close" data-close aria-label="关闭">×</button>
+    <h3 class="echo-form-title">补录一条回声</h3>
+    <p class="echo-form-hint">把你在书里、网上、家族中读到的句子归档进来，并标注来源。</p>
+    <form id="echoAddForm" class="echo-form">
+      <label class="echo-field">
+        <span>类型</span>
+        <select name="type">
+          <option value="literature">文学经典</option>
+          <option value="personal" selected>个人分享</option>
+          <option value="oral">口述史</option>
+        </select>
+      </label>
+      <label class="echo-field">
+        <span>主题</span>
+        <input type="text" name="theme" placeholder="如：亲情 / 爱情 / 友情 / 乡土">
+      </label>
+      <label class="echo-field">
+        <span>标题</span>
+        <input type="text" name="title" placeholder="一句话标题" required>
+      </label>
+      <label class="echo-field">
+        <span>作者 / 出处人物</span>
+        <input type="text" name="author" placeholder="原作者 或 留言者">
+      </label>
+      <label class="echo-field">
+        <span>摘录正文</span>
+        <textarea name="excerpt" rows="4" placeholder="把那段话原样贴进来" required></textarea>
+      </label>
+      <label class="echo-field">
+        <span>来源标注</span>
+        <input type="text" name="source" placeholder="如《秋天的怀念》 / 微博@xxx 2025年">
+      </label>
+      <label class="echo-field">
+        <span>标签（逗号分隔）</span>
+        <input type="text" name="tags" placeholder="母亲, 隐忍, 遗憾">
+      </label>
+      <label class="echo-field">
+        <span>我的批注（可选）</span>
+        <textarea name="note" rows="3" placeholder="为什么把它收进来？它让你想到什么？"></textarea>
+      </label>
+      <div class="echo-form-actions">
+        <button type="button" class="echo-btn ghost" data-close>取消</button>
+        <button type="submit" class="echo-btn solid">归档</button>
+      </div>
+    </form>
+  </article>
+</div>
+
+<footer class="footer">
+  <p>回声库 · Echo Archive</p>
+  <p class="footer-sub">归档那些替我们说出真相的文字</p>
+</footer>
+
+<script src="echo-data.js"></script>
+<script src="echo-render.js"></script>
+</body>
+</html>
