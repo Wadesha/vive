@@ -125,7 +125,14 @@
           <input type="date" name="unlockDate" required>
         </label>
         <label>信的内容
-          <textarea name="letter" rows="6" placeholder="在这里写下此刻想说的话..." required></textarea>
+          <div class="cap-tpl-list" id="capTplList">
+            <button type="button" class="cap-tpl-btn" data-tpl="此刻我坐在窗边，外面是初夏的风。\n\n我还记得那天发生的事。如果未来的你看到这封信，希望你已经不再为那件事纠结——不是忘记了，而是已经过去了。">一年后的自己</button>
+            <button type="button" class="cap-tpl-btn" data-tpl="今天是你出生的第___天。\n\n你还在睡，我不知道你将来会不会看到这封信。\n\n但我想告诉你：你是被期待的。">给孩子的话</button>
+            <button type="button" class="cap-tpl-btn" data-tpl="如果我们还在一起，这封信就是多余的。\n\n如果不在了，这封信就是见证——我们曾经好过。\n\n今天发生了一件小事，让我想封存这一刻。">给某个人</button>
+            <button type="button" class="cap-tpl-btn" data-tpl="现在的我正在低谷。\n\n如果你打开这封信时已经走出来了，请回头谢谢那个撑过来的自己。\n\n如果还没有，那就再多撑一会儿。">低谷时封存</button>
+            <button type="button" class="cap-tpl-btn" data-tpl="今天是___纪念日。\n\n当时觉得这天很重要，现在不确定了。\n\n不管怎样，我记录下了此刻的心情，这就够了。">纪念日</button>
+          </div>
+          <textarea name="letter" rows="6" placeholder="选上面的模板，或者自己写..." required></textarea>
         </label>
         <button type="submit" class="add-submit">封蜡 · 寄出</button>
       </form>

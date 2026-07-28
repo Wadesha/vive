@@ -41,9 +41,35 @@
     </p>
   </section>
 
+  <!-- ── 一键打卡：不用打字，点一下就记 ── -->
+  <section class="journey-punch">
+    <p class="journey-punch-label">快速打卡 · 不用打字，点一下就行</p>
+    <div class="journey-mood-tags" id="journeyMoodTags">
+      <button class="mood-tag" data-mood="温暖" data-text="此刻觉得温暖。">☀️ 温暖</button>
+      <button class="mood-tag" data-mood="柔软" data-text="心里软了一下。">🌿 柔软</button>
+      <button class="mood-tag" data-mood="开心" data-text="今天有开心的事。">😊 开心</button>
+      <button class="mood-tag" data-mood="难过" data-text="有点难过。">💧 难过</button>
+      <button class="mood-tag" data-mood="平静" data-text="此刻很平静。">🍃 平静</button>
+      <button class="mood-tag" data-mood="烦躁" data-text="今天有点烦。">⚡ 烦躁</button>
+      <button class="mood-tag" data-mood="愧疚" data-text="想起一件亏欠的事。">😔 愧疚</button>
+    </div>
+    <div class="journey-scene-cards" id="journeySceneCards">
+      <button class="scene-card" data-text="今天和家人吃了顿饭，说说笑笑。" data-mood="温暖">🍚 和家人吃饭</button>
+      <button class="scene-card" data-text="给爸妈打了个电话，聊了几句日常。" data-mood="温暖">📞 给爸妈打电话</button>
+      <button class="scene-card" data-text="想起了一个人，很久没联系了。" data-mood="柔软">💭 想起一个人</button>
+      <button class="scene-card" data-text="今天工作很累，但撑过来了。" data-mood="平静">💼 工作很累</button>
+      <button class="scene-card" data-text="路过一个地方，突然想起小时候的事。" data-mood="柔软">🏠 路过旧地</button>
+      <button class="scene-card" data-text="今天对谁发了脾气，后悔了。" data-mood="愧疚">😣 后悔发火</button>
+      <button class="scene-card" data-text="闻到一种味道，想到一个人。" data-mood="柔软">👃 闻到旧味道</button>
+      <button class="scene-card" data-text="听到一首歌，差点哭出来。" data-mood="难过">🎵 听到一首歌</button>
+      <button class="scene-card" data-text="今天做了一件值得记住的小事。" data-mood="开心">✨ 做了件小事</button>
+      <button class="scene-card" data-text="什么都不想说，只想标记今天存在过。" data-mood="平静">📌 今天存在过</button>
+    </div>
+  </section>
+
   <!-- ── 速记入口（之中）放在最显眼位置，一句话也能存 ── -->
   <section class="journey-quick-input">
-    <textarea id="quickText" rows="3" placeholder="现在想到什么，就写什么。一句话也行，不强制标签。&#10;比如：刚才路过面包店，闻到黄油味，想起外婆烤的馒头片。"></textarea>
+    <textarea id="quickText" rows="3" placeholder="如果打卡不够，这里可以多写几句（可选）。"></textarea>
     <div class="journey-quick-bar">
       <select id="quickMood">
         <option value="">心情（可选）</option>

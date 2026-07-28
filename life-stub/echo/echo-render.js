@@ -176,9 +176,24 @@
     html += '<button class="echo-detail-btn" data-action="toWishlist">🎯 许愿关联</button>';
     html += '</div>';
 
+    // 一键心情标记（不用打字）
     html += '<hr class="echo-divider">';
+    html += '<div class="echo-mood-mark">';
+    html += '<span class="echo-mood-mark-label">读到这里的心情：</span>';
+    html += '<div class="echo-mood-mark-tags">';
+    var MOOD_MARKS = ['☀️ 共鸣', '🌿 被触动', '💭 想到谁', '😢 心酸', '✨ 被安慰', '📌 收藏'];
+    MOOD_MARKS.forEach(function (m) {
+      html += '<button class="echo-mood-mark-btn" data-mark="' + escapeHtml(m) + '">' + m + '</button>';
+    });
+    html += '</div>';
+    html += '</div>';
+
+    html += '<hr class="echo-divider">';
+    html += '<details class="echo-detail-note-collapse">';
+    html += '<summary>想多写几句？（可选）</summary>';
     html += '<label class="echo-detail-my-label" for="echoMyNote">我的笔记（自动保存）</label>';
     html += '<textarea id="echoMyNote" class="echo-detail-my-note" rows="4" placeholder="读到这里，想到谁？想到什么事？">' + escapeHtml(userNote) + '</textarea>';
+    html += '</details>';
 
     $modalContent.innerHTML = html;
     $modal.hidden = false;
@@ -188,6 +203,25 @@
       btn.addEventListener('click', function () {
         var action = btn.getAttribute('data-action');
         handleExcerptAction(action, item);
+      });
+    });
+
+    // ── 心情标记按钮：点一下就存为笔记 ──
+    $modalContent.querySelectorAll('.echo-mood-mark-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var mark = btn.getAttribute('data-mark');
+        var existing = EchoArchive.getNote(id) || '';
+        var noteText = mark;
+        if (existing && !existing.startsWith('[')) {
+          noteText = mark + ' ' + existing;
+        }
+        EchoArchive.setNote(id, noteText);
+        btn.classList.add('marked');
+        btn.textContent = '✓ ' + mark;
+        setTimeout(function () {
+          btn.classList.remove('marked');
+          btn.textContent = mark;
+        }, 1500);
       });
     });
 

@@ -100,10 +100,36 @@
     var replyBox = document.createElement('div');
     replyBox.className = 'mail-reply-inline';
     replyBox.hidden = true;
+
+    // 模板回信按钮组（不用打字，点一下就填入）
+    var tplRow = document.createElement('div');
+    tplRow.className = 'mail-reply-templates';
+    var REPLY_TEMPLATES = [
+      '收到。我记下了。',
+      '谢谢你告诉我这些。',
+      '原来如此。我花了很久才明白。',
+      '对不起，当时我不懂。',
+      '没关系，都过去了。',
+      '我会做到的。',
+      '我也想你。'
+    ];
+    REPLY_TEMPLATES.forEach(function (tpl) {
+      var tb = document.createElement('button');
+      tb.type = 'button';
+      tb.className = 'mail-reply-tpl-btn';
+      tb.textContent = tpl;
+      tb.addEventListener('click', function () {
+        replyText.value = tpl;
+        replyText.focus();
+      });
+      tplRow.appendChild(tb);
+    });
+    replyBox.appendChild(tplRow);
+
     var replyText = document.createElement('textarea');
     replyText.className = 'mail-reply-textarea';
     replyText.rows = 4;
-    replyText.placeholder = '写回信……  写完点"寄出"';
+    replyText.placeholder = '选上面的模板，或者自己写……';
     replyText.value = item.reply || '';
     var replyActions = document.createElement('div');
     replyActions.className = 'mail-reply-inline-actions';

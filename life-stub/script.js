@@ -94,6 +94,27 @@
     });
   }
 
+  // ── 首页一键打卡：心情标签 ──
+  var $punchTags = document.getElementById('todayPunchTags');
+  if ($punchTags && typeof Journey !== 'undefined') {
+    $punchTags.addEventListener('click', function (e) {
+      var btn = e.target.closest('.punch-tag');
+      if (!btn) return;
+      Journey.addQuick({
+        content: btn.getAttribute('data-text'),
+        mood: btn.getAttribute('data-mood'),
+        relatedEcho: ''
+      });
+      var orig = btn.textContent;
+      btn.classList.add('punched');
+      btn.textContent = '✓ 已记录';
+      setTimeout(function () {
+        btn.classList.remove('punched');
+        btn.textContent = orig;
+      }, 1200);
+    });
+  }
+
   // ── 我的痕迹：读取 localStorage 统计 ──
   function loadMyStats() {
     var stats = {

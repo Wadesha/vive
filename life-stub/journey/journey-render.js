@@ -255,6 +255,43 @@
   $quickSaveBtn.addEventListener('click', handleQuickSave);
   $todoForm.addEventListener('submit', handleTodoSubmit);
   $modalSave.addEventListener('click', handleModalSave);
+
+  // ── 一键打卡：心情标签 ──
+  document.getElementById('journeyMoodTags').addEventListener('click', function (e) {
+    var btn = e.target.closest('.mood-tag');
+    if (!btn) return;
+    Journey.addQuick({
+      content: btn.getAttribute('data-text'),
+      mood: btn.getAttribute('data-mood'),
+      relatedEcho: ''
+    });
+    flashPunch(btn);
+    renderAll();
+  });
+
+  // ── 一键打卡：场景卡片 ──
+  document.getElementById('journeySceneCards').addEventListener('click', function (e) {
+    var btn = e.target.closest('.scene-card');
+    if (!btn) return;
+    Journey.addQuick({
+      content: btn.getAttribute('data-text'),
+      mood: btn.getAttribute('data-mood'),
+      relatedEcho: ''
+    });
+    flashPunch(btn);
+    renderAll();
+  });
+
+  function flashPunch(btn) {
+    btn.classList.add('punched');
+    var orig = btn.textContent;
+    btn.textContent = '✓ 已记录';
+    setTimeout(function () {
+      btn.classList.remove('punched');
+      btn.textContent = orig;
+    }, 1200);
+  }
+
   $resetBtn.addEventListener('click', function () {
     if (confirm('确定重置为示例数据？你的所有历程记录都会被清除。')) {
       Journey.resetToSeed();

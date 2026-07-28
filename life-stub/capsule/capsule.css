@@ -717,3 +717,29 @@
 .cap-reply-btn:hover { background: #A67B4E; }
 .cap-reply-btn:active { transform: translateY(1px); }
 .cap-reply-btn:disabled { opacity: 0.6; cursor: default; }
+
+/* ── 胶囊模板按钮 ── */
+.cap-tpl-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cap-tpl-btn {
+  background: #FDF9F2;
+  border: 1px solid #D4C4A8;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: #5C4A3A;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cap-tpl-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}

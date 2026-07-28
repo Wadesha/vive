@@ -247,6 +247,18 @@
         dateInput.value = d.toISOString().split('T')[0];
       }
     });
+
+    // 模板按钮：点一下填入信件内容
+    var tplBtns = document.querySelectorAll('.cap-tpl-btn');
+    tplBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var ta = form.querySelector('[name="letter"]');
+        if (ta) {
+          ta.value = btn.getAttribute('data-tpl').replace(/\\n/g, '\n');
+          ta.focus();
+        }
+      });
+    });
     if (closeBtn) closeBtn.addEventListener('click', function () { closeModal('createOverlay'); });
     overlay.addEventListener('click', function (e) { if (e.target === this) closeModal('createOverlay'); });
 

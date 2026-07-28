@@ -625,3 +625,56 @@
     pointer-events: none;
   }
 }
+
+/* ── 心情标记区 ── */
+.echo-mood-mark {
+  margin: 12px 0;
+}
+
+.echo-mood-mark-label {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.echo-mood-mark-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.echo-mood-mark-btn {
+  background: #FDF9F2;
+  border: 1px solid #D4C4A8;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: #5C4A3A;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.echo-mood-mark-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.echo-mood-mark-btn.marked {
+  background: #6B8E4E;
+  color: #fff;
+  border-color: #6B8E4E;
+}
+
+.echo-detail-note-collapse {
+  margin-top: 8px;
+}
+
+.echo-detail-note-collapse summary {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  cursor: pointer;
+  padding: 4px 0;
+}

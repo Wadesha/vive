@@ -928,6 +928,49 @@ body {
   margin-bottom: 12px;
 }
 
+.today-punch-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.punch-tag {
+  background: #FDF9F2;
+  border: 1px solid #D4C4A8;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #3E3529;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.punch-tag:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.punch-tag.punched {
+  background: #6B8E4E;
+  color: #fff;
+  border-color: #6B8E4E;
+}
+
+.today-quick-details {
+  margin-top: 8px;
+}
+
+.today-quick-details summary {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
 .today-quick-box {
   position: relative;
 }

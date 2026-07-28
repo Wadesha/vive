@@ -614,3 +614,29 @@
     padding: 18px 18px;
   }
 }
+
+/* ── 模板回信按钮组 ── */
+.mail-reply-templates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.mail-reply-tpl-btn {
+  background: #FDF9F2;
+  border: 1px solid #D4C4A8;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: #5C4A3A;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.mail-reply-tpl-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}

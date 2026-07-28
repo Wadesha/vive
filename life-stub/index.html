@@ -48,26 +48,38 @@
 
   <!-- ── 今日入口：点一下就有动作，不用找 ── -->
   <section class="today-entry">
-    <!-- 速记：直接写，直接存 -->
+    <!-- 一键打卡：不用打字 -->
     <div class="today-quick">
-      <p class="today-quick-label">今天想记下点什么？</p>
-      <div class="today-quick-box">
-        <textarea id="todayQuickText" rows="2" placeholder="一句话也行。Ctrl/⌘ + Enter 保存到历程簿"></textarea>
-        <div class="today-quick-bar">
-          <select id="todayQuickMood">
-            <option value="">心情（可选）</option>
-            <option value="温暖">温暖</option>
-            <option value="柔软">柔软</option>
-            <option value="开心">开心</option>
-            <option value="难过">难过</option>
-            <option value="平静">平静</option>
-            <option value="烦躁">烦躁</option>
-            <option value="愧疚">愧疚</option>
-          </select>
-          <button id="todayQuickSave" class="today-quick-btn">记下这一刻</button>
-        </div>
-        <p id="todayQuickHint" class="today-quick-hint" hidden>✓ 已存进历程簿</p>
+      <p class="today-quick-label">此刻心情？点一下就记进历程簿</p>
+      <div class="today-punch-tags" id="todayPunchTags">
+        <button class="punch-tag" data-mood="温暖" data-text="此刻觉得温暖。">☀️ 温暖</button>
+        <button class="punch-tag" data-mood="柔软" data-text="心里软了一下。">🌿 柔软</button>
+        <button class="punch-tag" data-mood="开心" data-text="今天有开心的事。">😊 开心</button>
+        <button class="punch-tag" data-mood="难过" data-text="有点难过。">💧 难过</button>
+        <button class="punch-tag" data-mood="平静" data-text="此刻很平静。">🍃 平静</button>
+        <button class="punch-tag" data-mood="烦躁" data-text="今天有点烦。">⚡ 烦躁</button>
+        <button class="punch-tag" data-mood="愧疚" data-text="想起一件亏欠的事。">😔 愧疚</button>
       </div>
+      <details class="today-quick-details">
+        <summary>想多写几句？（可选）</summary>
+        <div class="today-quick-box">
+          <textarea id="todayQuickText" rows="2" placeholder="一句话也行。Ctrl/⌘ + Enter 保存到历程簿"></textarea>
+          <div class="today-quick-bar">
+            <select id="todayQuickMood">
+              <option value="">心情（可选）</option>
+              <option value="温暖">温暖</option>
+              <option value="柔软">柔软</option>
+              <option value="开心">开心</option>
+              <option value="难过">难过</option>
+              <option value="平静">平静</option>
+              <option value="烦躁">烦躁</option>
+              <option value="愧疚">愧疚</option>
+            </select>
+            <button id="todayQuickSave" class="today-quick-btn">记下这一刻</button>
+          </div>
+          <p id="todayQuickHint" class="today-quick-hint" hidden>✓ 已存进历程簿</p>
+        </div>
+      </details>
     </div>
 
     <!-- 六个行动入口：点一下就触发 -->
