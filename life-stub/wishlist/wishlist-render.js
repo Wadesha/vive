@@ -6,6 +6,16 @@
   var state = { target: 'all', status: 'all' };
   var editingId = null;
 
+  // ── utils ──
+  function escapeHtml(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   // ── DOM ──
   var $progress = document.getElementById('wishlistProgress');
   var $targets = document.getElementById('wishlistTargets');

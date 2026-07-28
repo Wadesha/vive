@@ -1,0 +1,438 @@
+/* 引用网 · Link Net — 纸质感复古视觉，与主站一致 */
+
+.links-main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ── 页头 ── */
+.links-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.links-header .section-line {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: var(--line);
+  vertical-align: middle;
+  margin: 0 16px;
+}
+
+.links-title {
+  display: inline-block;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.15em;
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+.links-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.2em;
+  margin-top: 14px;
+  text-transform: uppercase;
+}
+
+.links-desc {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.02rem;
+  color: var(--ink-light);
+  line-height: 2;
+  margin-top: 22px;
+}
+
+.links-desc .highlight {
+  background: linear-gradient(180deg, transparent 60%, var(--highlight) 60%);
+  padding: 0 2px;
+}
+
+/* ── 统计总览 ── */
+.links-stats {
+  margin-bottom: 32px;
+}
+
+.links-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.links-stat-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 20px 16px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.links-stat-card b {
+  display: block;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.links-stat-card span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+.links-stat-card--accent {
+  background: var(--paper-dark);
+  border-color: var(--accent);
+}
+.links-stat-card--accent b { color: var(--accent); }
+
+.links-stats-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.links-source-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 7px 16px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  transition: background 0.2s, transform 0.2s;
+}
+.links-source-chip:hover { background: var(--paper-dark); transform: translateY(-1px); }
+
+.links-source-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.links-source-name { font-weight: 500; color: var(--ink); }
+
+.links-source-count {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ── 视图切换 ── */
+.links-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.links-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 20px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.98rem;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+.links-tab:hover { color: var(--ink-light); }
+.links-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+.links-view-hint {
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+  margin-bottom: 20px;
+  padding-left: 4px;
+}
+.links-view-hint b { color: var(--accent); }
+
+/* ── 引用关系卡片 ── */
+.links-ref-card {
+  display: grid;
+  grid-template-columns: 1fr auto 1.1fr;
+  gap: 18px;
+  align-items: center;
+  background: #FDFBF7;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+}
+
+.links-ref-from {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.links-source-tag {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 2px 10px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.links-source-tag:hover { opacity: 0.7; }
+
+.links-ref-text { min-width: 0; }
+
+.links-ref-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.links-ref-preview {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.links-ref-arrow {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.links-ref-to {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--paper);
+  border: 1px dashed var(--line);
+  border-radius: 2px;
+  padding: 12px 14px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.links-ref-to:hover { background: var(--paper-dark); border-color: var(--accent); }
+
+.links-ref-echo-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.links-ref-echo-author {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+
+.links-ref-echo-excerpt {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  border-left: 2px solid var(--line);
+  padding-left: 10px;
+  font-style: italic;
+}
+
+/* ── 反向引用卡片 ── */
+.links-rev-card {
+  background: #FDFBF7;
+  border: 1px solid var(--line);
+  border-left: 4px solid #6B5D4D;
+  padding: 22px 24px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.links-rev-echo {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.links-rev-echo:hover .links-rev-echo-title { color: var(--accent); }
+
+.links-rev-echo-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.links-rev-echo-author {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.links-rev-echo-excerpt {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  border-left: 2px solid var(--line);
+  padding-left: 12px;
+  font-style: italic;
+}
+
+.links-rev-count {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  margin: 14px 0 10px;
+}
+.links-rev-count b { color: var(--accent); font-size: 0.95rem; }
+
+.links-rev-backrefs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.links-backref {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 8px 12px;
+  background: var(--paper);
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.links-backref:hover { background: var(--paper-dark); }
+
+.links-backref-title {
+  font-size: 0.85rem;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── 全部条目视图 ── */
+.links-group {
+  margin-bottom: 28px;
+}
+
+.links-group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.links-entry-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  padding: 12px 14px;
+  border-bottom: 1px dotted var(--line);
+  transition: background 0.2s;
+}
+.links-entry-row:hover { background: var(--paper); }
+.links-entry-row:last-child { border-bottom: none; }
+
+.links-entry-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  flex-shrink: 0;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.links-entry-preview {
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.links-ref-badge {
+  font-size: 0.72rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 1px 8px;
+  flex-shrink: 0;
+}
+
+.links-entry-go {
+  color: var(--ink-faint);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── 空状态 ── */
+.links-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-faint);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+  .links-main { padding: 28px 16px 60px; }
+  .links-title { font-size: 1.8rem; }
+  .links-header .section-line { width: 36px; margin: 0 10px; }
+  .links-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .links-ref-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .links-ref-arrow { text-align: center; }
+  .links-entry-title { max-width: 140px; }
+  .links-tabs { overflow-x: auto; flex-wrap: nowrap; }
+  .links-tab { white-space: nowrap; padding: 12px 14px; font-size: 0.88rem; }
+}

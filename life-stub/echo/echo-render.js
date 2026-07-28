@@ -258,7 +258,7 @@
 
   $addBtn.addEventListener('click', openAdd);
   $resetBtn.addEventListener('click', function () {
-    if (confirm('确定要重置为初始 15 条归档吗？你补录的内容和笔记都会被清除。')) {
+    if (confirm('确定要重置为初始 55 条归档吗？你补录的内容和笔记都会被清除。')) {
       EchoArchive.resetToSeed();
       state.type = 'all';
       syncFilterButtons();

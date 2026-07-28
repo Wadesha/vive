@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>回信亭 · 生活存根簿</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="mail.css">
+</head>
+<body>
+<div class="paper-texture"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">存根簿</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../demo.html">翻阅</a></li>
+      <li><a href="../capsule/capsule.html">时光胶囊</a></li>
+      <li><a href="../echo/echo.html">回声库</a></li>
+      <li><a href="../journey/journey.html">历程簿</a></li>
+      <li><a href="../wishlist/wishlist.html">心愿册</a></li>
+      <li><a href="mail.html" class="active">回信亭</a></li>
+      <li><a href="../links/links.html">引用网</a></li>
+      <li><a href="../about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main mail-main">
+  <section class="mail-header">
+    <div class="section-line"></div>
+    <h1 class="mail-title">回信亭</h1>
+    <div class="section-line"></div>
+    <p class="mail-sub">Echo Mail · 另一个我，在回应自己</p>
+    <p class="mail-desc">
+      心理学有个现象叫<span class="underline">"未来自我他者化"</span>——<br>
+      人天然把过去和未来的自己当成陌生人。<br>
+      所以你读到的每一段名人文字、每一条网友分享，<br>
+      都是<span class="highlight">平行宇宙里经历过同样事的我</span>，写给你的信。<br>
+      记录不是孤独的重复，是不同时间维度的"我"在对话。
+    </p>
+  </section>
+
+  <!-- ── 三种信的入口 ── -->
+  <section class="mail-actions">
+    <button class="mail-action-card mail-action--past" data-type="past">
+      <span class="mail-action-mark">寄往过去</span>
+      <span class="mail-action-title">给过去的自己 / 故人写一封信</span>
+      <span class="mail-action-hint">"如果能回到那一刻，我想说……"</span>
+    </button>
+    <button class="mail-action-card mail-action--mirror" id="mailDrawMirror">
+      <span class="mail-action-mark">来自平行我</span>
+      <span class="mail-action-title">抽取一封回声库的来信</span>
+      <span class="mail-action-hint">随机一条，作为"另一个我"写给你的信</span>
+    </button>
+    <button class="mail-action-card mail-action--future" data-type="future">
+      <span class="mail-action-mark">未来的回响</span>
+      <span class="mail-action-title">给未来某时刻的自己写信</span>
+      <span class="mail-action-hint">不是封存，是对话——未来你会回信</span>
+    </button>
+  </section>
+
+  <!-- ── 统计 + 筛选 ── -->
+  <section class="mail-toolbar">
+    <div class="mail-stats" id="mailStats"></div>
+    <div class="mail-filters" id="mailFilters">
+      <button class="mail-filter active" data-type="all">全部</button>
+      <button class="mail-filter" data-type="past">寄往过去</button>
+      <button class="mail-filter" data-type="mirror">平行我</button>
+      <button class="mail-filter" data-type="future">未来</button>
+    </div>
+    <button class="mail-btn ghost small danger" id="mailResetBtn">重置</button>
+  </section>
+
+  <!-- ── 信件列表 ── -->
+  <section class="mail-list" id="mailList"></section>
+
+  <section class="mail-empty" id="mailEmpty" hidden>
+    <p>这里还没有信。从上方选一种方式开始对话。</p>
+  </section>
+</main>
+
+<!-- 写信弹窗 -->
+<div class="mail-modal" id="mailModal" hidden>
+  <div class="mail-modal-mask" data-close></div>
+  <article class="mail-modal-body">
+    <button class="mail-modal-close" data-close aria-label="关闭">×</button>
+    <h3 class="mail-modal-title" id="mailModalTitle">写一封信</h3>
+
+    <!-- 平行我来信展示区（仅 mirror 类型显示） -->
+    <div class="mail-mirror-display" id="mailMirrorDisplay" hidden>
+      <div class="mail-mirror-label">来自平行我的信</div>
+      <blockquote class="mail-mirror-excerpt" id="mailMirrorExcerpt"></blockquote>
+      <div class="mail-mirror-source" id="mailMirrorSource"></div>
+    </div>
+
+    <form id="mailForm" class="mail-form">
+      <label class="mail-field">
+        <span>寄给</span>
+        <input type="text" name="to" id="mailFormTo" placeholder="如：十八岁的自己 / 五年后的我 / 爷爷" required>
+      </label>
+
+      <label class="mail-field">
+        <span>信的正文</span>
+        <textarea name="content" rows="6" placeholder="把想说的话写下来。这不是日记，是一封会跨越时间的信。" required></textarea>
+      </label>
+
+      <input type="hidden" name="type" id="mailFormType" value="past">
+      <input type="hidden" name="fromEcho" id="mailFormFromEcho" value="">
+      <input type="hidden" name="echoExcerpt" id="mailFormEchoExcerpt" value="">
+
+      <div class="mail-form-actions">
+        <button type="button" class="mail-btn ghost" data-close>取消</button>
+        <button type="submit" class="mail-btn solid">寄出</button>
+      </div>
+    </form>
+  </article>
+</div>
+
+<!-- 信件详情弹窗（含回信） -->
+<div class="mail-modal" id="mailDetailModal" hidden>
+  <div class="mail-modal-mask" data-close></div>
+  <article class="mail-modal-body mail-detail-body">
+    <button class="mail-modal-close" data-close aria-label="关闭">×</button>
+    <div id="mailDetailContent"></div>
+  </article>
+</div>
+
+<footer class="footer">
+  <p>回信亭 · Echo Mail</p>
+  <p class="footer-sub">另一个我，在回应自己</p>
+</footer>
+
+<script src="../echo/echo-data.js"></script>
+<script src="mail-data.js"></script>
+<script src="mail-render.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>引用网 · 生活存根簿</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="links.css">
+</head>
+<body>
+<div class="paper-texture"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">存根簿</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../demo.html">翻阅</a></li>
+      <li><a href="../capsule/capsule.html">时光胶囊</a></li>
+      <li><a href="../echo/echo.html">回声库</a></li>
+      <li><a href="../journey/journey.html">历程簿</a></li>
+      <li><a href="../wishlist/wishlist.html">心愿册</a></li>
+      <li><a href="../mail/mail.html">回信亭</a></li>
+      <li><a href="links.html" class="active">引用网</a></li>
+      <li><a href="../about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main links-main">
+  <section class="links-header">
+    <div class="section-line"></div>
+    <h1 class="links-title">引用网</h1>
+    <div class="section-line"></div>
+    <p class="links-sub">Link Net · 六个子产品，第一次被串成一个网络</p>
+    <p class="links-desc">
+      你在历程簿记下的一句话、在回信亭写的一封信，<br>
+      都可以挂到回声库某条"替你说话"的文字上。<br>
+      这条引用，就是<span class="highlight">不同时间维度的"我"在互相回应</span>的痕迹。<br>
+      点开任何一条，跳到它诞生的那个子产品。
+    </p>
+  </section>
+
+  <!-- 统计总览 -->
+  <section class="links-stats" id="linksStats"></section>
+
+  <!-- 视图切换 -->
+  <section class="links-tabs" id="linksTabs">
+    <button class="links-tab active" data-view="refs">引用关系（谁在引用回声）</button>
+    <button class="links-tab" data-view="reverse">反向引用（被引用的回声）</button>
+    <button class="links-tab" data-view="all">全部条目</button>
+  </section>
+
+  <!-- 视图内容 -->
+  <section class="links-view" id="linksView"></section>
+
+  <section class="links-empty" id="linksEmpty" hidden>
+    <p>还没有任何引用关系。去历程簿或回信亭，把一条记录挂到回声库某条上试试。</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>引用网 · Link Net</p>
+  <p class="footer-sub">六个子产品，一个网络</p>
+</footer>
+
+<script src="links-data.js"></script>
+<script src="links-render.js"></script>
+</body>
+</html>

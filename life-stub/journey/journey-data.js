@@ -54,6 +54,78 @@
       relatedEcho: 'e1',
       createdAt: Date.now() - 1000 * 60 * 60 * 24 * 80,
       settledAt: Date.now() - 1000 * 60 * 60 * 24 * 70
+    },
+    {
+      id: 'j5',
+      stage: STAGE_TODO,
+      content: '下次和外婆视频，要让她念一段她年轻时挑水走山路的旧事，录下来。她最近开始把同一个故事讲两遍，我怕来不及。',
+      mood: '',
+      relatedEcho: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 9,
+      settledAt: 0
+    },
+    {
+      id: 'j6',
+      stage: STAGE_TODO,
+      content: '清明节前，把爷爷那张在老屋门槛上抽烟的照片找出来，扫描一份存进存根簿。原照已经发黄，边角有水渍。',
+      mood: '',
+      relatedEcho: '',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
+      settledAt: 0
+    },
+    {
+      id: 'j7',
+      stage: STAGE_QUICK,
+      content: '今天下雨，下班路过那家面馆，老板娘还认得我，说"还是老样子，多辣少葱？"。我说对。坐下来才反应过来，这是十年前我和他常来的店。他走了六年，口味却被一个陌生人替我记住了。',
+      mood: '柔软',
+      relatedEcho: 'e2',
+      createdAt: Date.now() - 1000 * 60 * 60 * 3,
+      settledAt: 0
+    },
+    {
+      id: 'j8',
+      stage: STAGE_QUICK,
+      content: '辅导女儿写作业，她把"爷"字写错了三遍，我正要发火，突然想起我爸当年也是这样拍着桌子教我写"奶"字。我把举起来的手放下了。原来脾气也是会遗传的，但我可以决定从这里断开。',
+      mood: '愧疚',
+      relatedEcho: 'e1',
+      createdAt: Date.now() - 1000 * 60 * 60 * 26,
+      settledAt: 0
+    },
+    {
+      id: 'j9',
+      stage: STAGE_QUICK,
+      content: '整理衣柜翻出一件旧毛衣，袖口磨毛了，是妈妈十几年前织的。我试了试，居然还合身。那一刻有种很奇怪的感觉——她当年织毛衣时想象的那个"未来的我"，就是现在穿着它的我。我们在同一件衣服里相遇了。',
+      mood: '温暖',
+      relatedEcho: 'e44',
+      createdAt: Date.now() - 1000 * 60 * 60 * 48,
+      settledAt: 0
+    },
+    {
+      id: 'j10',
+      stage: STAGE_QUICK,
+      content: '同事问我周末干嘛，我说回家。他说"你每周都回，不烦吗"。我没回答。烦什么呢，我妈每周给我打电话时声音都在变老，我只是怕哪天她忽然不打了。',
+      mood: '平静',
+      relatedEcho: 'e33',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 4,
+      settledAt: 0
+    },
+    {
+      id: 'j11',
+      stage: STAGE_SETTLED,
+      content: '三个月前记下"外婆开始把故事讲两遍"。上周回去，她真的一段也没重复，反而讲了几件我从没听过的抗战逃难旧事。我录了四十分钟。这条已沉淀，录音存进了存根簿"记忆锚点"。',
+      mood: '温暖',
+      relatedEcho: 'e13',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 90,
+      settledAt: Date.now() - 1000 * 60 * 60 * 24 * 2
+    },
+    {
+      id: 'j12',
+      stage: STAGE_SETTLED,
+      content: '读史铁生《我与地坛》那段"有过我的车辙的地方也都有过母亲的脚印"，坐在阳台上哭了很久。原来我以为是自己在走，其实一直有人在背后找我。这条已沉淀，挂到回声库 e33 作参照。',
+      mood: '难过',
+      relatedEcho: 'e33',
+      createdAt: Date.now() - 1000 * 60 * 60 * 24 * 120,
+      settledAt: Date.now() - 1000 * 60 * 60 * 24 * 100
     }
   ];
 
