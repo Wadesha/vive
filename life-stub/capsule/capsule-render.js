@@ -31,7 +31,18 @@
   }
 
   function typeLabel(t) {
-    var m = { self: '给自己', memory: '记忆', anniversary: '纪念日', child: '给孩子', love: '给爱人', letter: '给某人' };
+    var m = {
+      self: '给自己',
+      memory: '记忆',
+      anniversary: '纪念日',
+      child: '给孩子',
+      love: '给爱人',
+      lover: '给爱人',
+      letter: '给某人',
+      someone: '给某人',
+      friend: '给朋友',
+      regret: '遗憾封存'
+    };
     return m[t] || t;
   }
 

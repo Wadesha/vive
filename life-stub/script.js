@@ -146,12 +146,12 @@
     } catch (e) {}
 
     // 如果 localStorage 是空的（首次访问），显示 seed 数据的统计
-    if (stats.echo === 0) stats.echo = 81;
-    if (stats.journey === 0) stats.journey = 20;
-    if (stats.wish === 0) stats.wish = 64;
-    if (stats.capsule === 0) stats.capsule = 25;
-    if (stats.mail === 0) stats.mail = 15;
-    if (stats.stub === 0) stats.stub = 20;
+          if (stats.echo === 0) stats.echo = 80;
+          if (stats.journey === 0) stats.journey = 20;
+          if (stats.wish === 0) stats.wish = 64;
+          if (stats.capsule === 0) stats.capsule = 25;
+          if (stats.mail === 0) stats.mail = 15;
+          if (stats.stub === 0) stats.stub = 20;
 
     var el = function (id) { return document.getElementById(id); };
     var animateNum = function ($el, target) {
