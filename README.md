@@ -1,6 +1,8 @@
-# vive
+# vive-life-stub
 
 生活存根簿 — 生活痕迹的锚点
+
+> 在线访问：https://wadesha.github.io/vive-life-stub/life-stub/index.html
 
 ## 项目简介
 
